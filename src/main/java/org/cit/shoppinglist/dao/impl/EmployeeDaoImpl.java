@@ -1,4 +1,4 @@
-package com.dao.impl;
+package org.cit.shoppinglist.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -8,11 +8,10 @@ import java.util.Map;
 
 import javax.sql.DataSource;
 
+import org.cit.shoppinglist.dao.EmployeeDao;
+import org.cit.shoppinglist.model.Employee;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
-
-import com.dao.EmployeeDao;
-import com.model.Employee;
 
 public class EmployeeDaoImpl implements EmployeeDao {
 

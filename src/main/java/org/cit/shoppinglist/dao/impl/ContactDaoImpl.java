@@ -1,4 +1,4 @@
-package com.dao.impl;
+package org.cit.shoppinglist.dao.impl;
 
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -6,13 +6,12 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.cit.shoppinglist.dao.ContactDao;
+import org.cit.shoppinglist.model.Contact;
 import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
-
-import com.dao.ContactDao;
-import com.model.Contact;
 
 
 /**

@@ -1,8 +1,8 @@
-package com.dao;
+package org.cit.shoppinglist.dao;
 
 import java.util.List;
 
-import com.model.Contact;
+import org.cit.shoppinglist.model.Contact;
 
 /**
  * Defines DAO operations for the contact model.

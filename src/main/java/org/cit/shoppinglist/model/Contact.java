@@ -1,4 +1,4 @@
-package com.model;
+package org.cit.shoppinglist.model;
 
 public class Contact {
     private int id;

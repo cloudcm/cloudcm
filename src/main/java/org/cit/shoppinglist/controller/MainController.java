@@ -1,4 +1,4 @@
-package com.controller;
+package org.cit.shoppinglist.controller;
 
 import java.security.Principal;
 

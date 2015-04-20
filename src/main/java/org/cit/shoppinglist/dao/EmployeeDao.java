@@ -1,8 +1,8 @@
-package com.dao;
+package org.cit.shoppinglist.dao;
 
 import java.util.List;
 
-import com.model.Employee;
+import org.cit.shoppinglist.model.Employee;
 
 //CRUD operations
 public interface EmployeeDao {

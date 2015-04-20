@@ -9,14 +9,16 @@
   
     <context:component-scan base-package="org.o7planning.tutorial.springmvcsecurity.controller" />
   
-    <bean
-      class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+      
       <property name="prefix">
         <value>/WEB-INF/pages/</value>
       </property>
+     
       <property name="suffix">
         <value>.jsp</value>
       </property>
+   
     </bean>
   
 </beans>

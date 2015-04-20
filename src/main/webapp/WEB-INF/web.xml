@@ -2,7 +2,7 @@
 <web-app version="2.4" xmlns="http://java.sun.com/xml/ns/j2ee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_4.xsd">
-	<display-name>SpringJDBCExample</display-name>
+	<display-name>shoppinglist</display-name>
 	
 	<context-param>
 		<param-name>contextClass</param-name>
@@ -46,7 +46,7 @@
 	</servlet-mapping>
 	
 	<!-- Spring Security Filter -->
-    <filter>
+    <!-- <filter>
         <filter-name>springSecurityFilterChain</filter-name>
         <filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
     </filter>
@@ -54,7 +54,7 @@
     <filter-mapping>
         <filter-name>springSecurityFilterChain</filter-name>
         <url-pattern>/*</url-pattern>
-    </filter-mapping>
+    </filter-mapping> -->
     
 	<session-config>
 		<session-timeout>30</session-timeout>
