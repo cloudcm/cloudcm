@@ -14,12 +14,6 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.core.RowMapper;
 
 
-/**
- * An implementation of the ContactDAO interface.
- * 
- * @author www.codejava.net
- *
- */
 public class ContactDaoImpl implements ContactDao {
 	
 	private DataSource dataSource;
