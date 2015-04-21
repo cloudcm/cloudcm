@@ -15,7 +15,8 @@
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 		<!-- Spring -->
-		<spring-framework.version>4.0.3.RELEASE</spring-framework.version>
+		<spring-framework.version>4.1.4.RELEASE</spring-framework.version>
+		<spring-security.version>3.2.5.RELEASE</spring-security.version>
 		<cglib.version>2.2.2</cglib.version>
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
@@ -25,90 +26,92 @@
 
 	<dependencies>
 
-		<!-- Spring core & mvc -->
+		<!-- Spring framework START -->
+
+		<!-- http://mvnrepository.com/artifact/org.springframework/spring-core -->
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-context</artifactId>
+			<artifactId>spring-core</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
 
+		<!-- http://mvnrepository.com/artifact/org.springframework/spring-web -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-framework.version}</version>
+		</dependency>
+
+		<!-- http://mvnrepository.com/artifact/org.springframework/spring-webmvc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-orm</artifactId>
-			<version>${spring-framework.version}</version>
-			<type>jar</type>
-			<scope>compile</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-tx</artifactId>
-			<version>${spring-framework.version}</version>
-		</dependency>
 
-		<!-- Spring JDBC Support -->
+		<!-- http://mvnrepository.com/artifact/org.springframework/spring-jdbc -->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jdbc</artifactId>
 			<version>${spring-framework.version}</version>
 		</dependency>
+
 		<!-- Spring framework END -->
-		
-		
+
+
 		<!-- Spring Security Artifacts - START -->
-        <!-- http://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-web</artifactId>
-            <version>3.2.5.RELEASE</version>
-        </dependency>
- 
-        <!-- http://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
-        <dependency>
-            <groupId>org.springframework.security</groupId>
-            <artifactId>spring-security-config</artifactId>
-            <version>3.2.5.RELEASE</version>
-        </dependency>
-        <!-- Spring Security Artifacts - END -->
-        
-		<!-- CGLib for @Configuration -->
+
+		<!-- http://mvnrepository.com/artifact/org.springframework.security/spring-security-web -->
 		<dependency>
-			<groupId>cglib</groupId>
-			<artifactId>cglib-nodep</artifactId>
-			<version>${cglib.version}</version>
-			<scope>runtime</scope>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>${spring-security.version}</version>
 		</dependency>
 
+		<!-- http://mvnrepository.com/artifact/org.springframework.security/spring-security-config -->
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>${spring-security.version}</version>
+		</dependency>
 
-		<!-- Servlet Spec -->
+		<!-- Spring Security Artifacts - END -->
+
+
+		<!-- Jstl for jsp page -->
+		<!-- http://mvnrepository.com/artifact/javax.servlet/jstl -->
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+
+		<!-- Servlet API -->
+		<!-- http://mvnrepository.com/artifact/javax.servlet/javax.servlet-api -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
 			<artifactId>javax.servlet-api</artifactId>
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<!-- JSP API -->
+		<!-- http://mvnrepository.com/artifact/javax.servlet.jsp/jsp-api -->
 		<dependency>
 			<groupId>javax.servlet.jsp</groupId>
-			<artifactId>javax.servlet.jsp-api</artifactId>
-			<version>2.3.1</version>
+			<artifactId>jsp-api</artifactId>
+			<version>2.2</version>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>jstl</groupId>
-			<artifactId>jstl</artifactId>
-			<version>1.2</version>
-		</dependency>
 
-		<!-- MySQL Driver -->
+		<!-- MySQL JDBC driver -->
+		<!-- http://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.0.5</version>
+			<version>5.1.34</version>
 		</dependency>
+
 
 		<!-- Logging with SLF4J & LogBack -->
 		<dependency>
@@ -117,6 +120,7 @@
 			<version>${slf4j.version}</version>
 			<scope>compile</scope>
 		</dependency>
+
 		<dependency>
 			<groupId>ch.qos.logback</groupId>
 			<artifactId>logback-classic</artifactId>
@@ -130,11 +134,13 @@
 			<artifactId>aspectjrt</artifactId>
 			<version>1.8.5</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjweaver</artifactId>
 			<version>1.8.5</version>
 		</dependency>
+
 	</dependencies>
 
 	<build>
