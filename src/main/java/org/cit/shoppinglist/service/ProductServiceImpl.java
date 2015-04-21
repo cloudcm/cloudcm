@@ -2,21 +2,21 @@ package org.cit.shoppinglist.service;
 
 import java.util.List;
 
-import org.cit.shoppinglist.dao.ContactDao;
-import org.cit.shoppinglist.model.Contact;
+import org.cit.shoppinglist.dao.ProductDao;
+import org.cit.shoppinglist.model.Product;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class ContactServiceImpl implements ContactService {
+public class ProductServiceImpl implements ProductService {
 
 	@Autowired
-	private ContactDao contactDao;
+	private ProductDao productDao;
 
 	@Override
-	public void saveContact(Contact contact) {
+	public void saveProduct(Product contact) {
 		try {
-			contactDao.saveOrUpdate(contact);
+			productDao.saveOrUpdate(contact);
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -24,9 +24,9 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public void deleteContact(int contactId) {
+	public void deleteProduct(int productId) {
 		try {
-			contactDao.delete(contactId);
+			productDao.delete(productId);
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -35,9 +35,9 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public Contact getContactById(int contactId) {
+	public Product getProductById(int productId) {
 		try {
-			return contactDao.get(contactId);
+			return productDao.getById(productId);
 
 		} catch (Exception ex) {
 			ex.printStackTrace();
@@ -47,9 +47,9 @@ public class ContactServiceImpl implements ContactService {
 	}
 
 	@Override
-	public List<Contact> getAllContacts() {
+	public List<Product> getAllProducts() {
 		try {
-			return contactDao.list();
+			return productDao.getAllProducts();
 
 		} catch (Exception ex) {
 			ex.printStackTrace();

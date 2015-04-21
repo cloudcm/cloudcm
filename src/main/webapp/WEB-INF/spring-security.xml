@@ -12,8 +12,8 @@
 		<intercept-url pattern="/welcome" access="isAnonymous()" />
 		<intercept-url pattern="/login" access="isAnonymous()" />
 		<intercept-url pattern="/logout" access="isAnonymous()" />
-		<intercept-url pattern="/contacts" access="isAnonymous()" />
-		<intercept-url pattern="/newContact" access="isAnonymous()" />
+		<intercept-url pattern="/products" access="isAnonymous()" />
+		<intercept-url pattern="/newProduct" access="isAnonymous()" />
 
 		<intercept-url pattern="/userInfo" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
 		<intercept-url pattern="/admin" access="hasRole('ROLE_ADMIN')" />

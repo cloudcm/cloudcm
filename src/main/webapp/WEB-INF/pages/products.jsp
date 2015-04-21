@@ -6,32 +6,30 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Contact Manager Home</title>
+<title>Product Manager Home</title>
 </head>
 <body>
 	<div align="center">
-		<h1>Contact List</h1>
+		<h1>Product List</h1>
 		<h3>
-			<a href="newContact">New Contact</a>
+			<a href="newProduct">New Product</a>
 		</h3>
 		<table border="1">
 			<tr>
 				<th>No</th>
 				<th>Name</th>
-				<th>Email</th>
-				<th>Address</th>
-				<th>Telephone</th>
+				<th>Price</th>
+				<th>Detail</th>
 				<th>Action</th>
 			</tr>
 
-			<c:forEach var="contact" items="${listContact}" varStatus="status">
+			<c:forEach var="product" items="${productList}" varStatus="status">
 				<tr>
 					<td>${status.index + 1}</td>
-					<td>${contact.name}</td>
-					<td>${contact.email}</td>
-					<td>${contact.address}</td>
-					<td>${contact.telephone}</td>
-					<td><a href="editContact?id=${contact.id}">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="deleteContact?id=${contact.id}">Delete</a></td>
+					<td>${product.name}</td>
+					<td>${product.price}</td>
+					<td>${product.detail}</td>
+					<td><a href="editProduct?id=${product.id}">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="deleteProduct?id=${product.id}">Delete</a></td>
 
 				</tr>
 			</c:forEach>

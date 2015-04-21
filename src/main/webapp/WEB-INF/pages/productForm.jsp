@@ -5,12 +5,12 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>New/Edit Contact</title>
+<title>New/Edit Product</title>
 </head>
 <body>
 	<div align="center">
-		<h1>New/Edit Contact</h1>
-		<form:form action="saveContact" method="post" modelAttribute="contact">
+		<h1>New/Edit Product</h1>
+		<form:form action="saveProduct" method="post" modelAttribute="product">
 			<table>
 				<form:hidden path="id" />
 				<tr>
@@ -18,16 +18,12 @@
 					<td><form:input path="name" /></td>
 				</tr>
 				<tr>
-					<td>Email:</td>
-					<td><form:input path="email" /></td>
+					<td>Price:</td>
+					<td><form:input path="price" /></td>
 				</tr>
 				<tr>
-					<td>Address:</td>
-					<td><form:input path="address" /></td>
-				</tr>
-				<tr>
-					<td>Telephone:</td>
-					<td><form:input path="telephone" /></td>
+					<td>Detail:</td>
+					<td><form:input path="detail" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="Save"></td>

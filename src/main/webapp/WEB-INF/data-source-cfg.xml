@@ -4,19 +4,19 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
 
 	
-	<bean id="contactDao" class="org.cit.shoppinglist.dao.impl.ContactDaoImpl">
+	<bean id="productDao" class="org.cit.shoppinglist.dao.impl.ProductDaoImpl">
 		<property name="dataSource" ref="shoppingListDataSource" />
 	</bean>
 	
 	<bean id="shoppingListDataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
       <property name="driverClassName" value="com.mysql.jdbc.Driver" />
-      <!-- <property name="url" value="jdbc:mysql://localhost:3306/contactdb" />
+      <property name="url" value="jdbc:mysql://localhost:3306/contactdb" />
       <property name="username" value="root" />
-      <property name="password" value="root" /> -->
+      <property name="password" value="root" />
       
-      <property name="url" value="jdbc:mysql://us-cdbr-iron-east-02.cleardb.net:3306/ad_a3f9df1b0149a3c" />
+      <!-- <property name="url" value="jdbc:mysql://us-cdbr-iron-east-02.cleardb.net:3306/ad_a3f9df1b0149a3c" />
       <property name="username" value="b0b81235564989" />
-      <property name="password" value="f239df19" />
+      <property name="password" value="f239df19" /> -->
    </bean>
 
 </beans>
