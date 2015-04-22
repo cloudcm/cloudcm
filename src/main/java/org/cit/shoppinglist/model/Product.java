@@ -9,8 +9,9 @@ import javax.validation.constraints.Size;
  * Product Class is used to hold product information
  * 
  */
-public class Product{
+public class Product implements Serializable {
 
+	private static final long serialVersionUID = 1L;
 
 	private int id;
 	
