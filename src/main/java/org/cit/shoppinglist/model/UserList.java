@@ -16,7 +16,7 @@ public class UserList implements Serializable {
 	private int userId;
 	private String name;
 	private User user;
-	private List<Product> products = new ArrayList<Product>(); // this list represents UserListProduct entity
+	private List<UserListItem> userListItems = new ArrayList<UserListItem>();
 
 	public UserList() {
 
@@ -29,12 +29,12 @@ public class UserList implements Serializable {
 	 * @param user
 	 * @param products
 	 */
-	public UserList(int id, int userId, String name, User user, List<Product> products) {
+	public UserList(int id, int userId, String name, User user, List<UserListItem> userListItems) {
 		this.id = id;
 		this.userId = userId;
 		this.name = name;
 		this.user = user;
-		this.products = products;
+		this.userListItems = userListItems;
 	}
 
 	/**
@@ -97,17 +97,17 @@ public class UserList implements Serializable {
 	}
 
 	/**
-	 * @return the products
+	 * @return the userListItems
 	 */
-	public List<Product> getProducts() {
-		return products;
+	public List<UserListItem> getUserListItems() {
+		return userListItems;
 	}
 
 	/**
-	 * @param products the products to set
+	 * @param userListItems the userListItems to set
 	 */
-	public void setProducts(List<Product> products) {
-		this.products = products;
+	public void setUserListItems(List<UserListItem> userListItems) {
+		this.userListItems = userListItems;
 	}
 
 }

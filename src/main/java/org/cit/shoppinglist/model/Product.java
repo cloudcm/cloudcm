@@ -18,10 +18,10 @@ public class Product implements Serializable {
 	@Min(1)
 	private double price;
 	
-	@Size(min=1,max=20, message="Name can not be empty")
+	@Size(min=1,max=200)
 	private String name;
 	
-	@Size(min=1,max=20, message="Description can not be empty")
+	@Size(min=1,max=5000)
 	private String description;
 
 	public Product() {

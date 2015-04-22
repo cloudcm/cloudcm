@@ -10,7 +10,7 @@
 	<form name='f' action="j_spring_security_check" method='POST'>
 		<table>
 			<tr>
-				<td colspan="2">${message}</td>
+				<td colspan="2">Enter your username/password:</td>
 			</tr>
 			
 			<tr>

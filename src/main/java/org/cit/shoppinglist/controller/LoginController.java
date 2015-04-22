@@ -8,33 +8,20 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
-public class MainController {
+public class LoginController {
 
-	@RequestMapping(value = { "/", "/welcome" }, method = RequestMethod.GET)
-	public String welcomePage(Model model) {
-		model.addAttribute("title", "Welcome");
-		model.addAttribute("message", "This is welcome page!");
-		return "welcomePage";
-	}
-
-	@RequestMapping(value = "/admin", method = RequestMethod.GET)
-	public String adminPage(Model model) {
-		model.addAttribute("title", "Admin");
-		model.addAttribute("message", "Admin Page - This is protected page!");
-		return "adminPage";
-	}
-
-	@RequestMapping(value = "/login", method = RequestMethod.GET)
+	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public String loginPage(Model model) {
 		model.addAttribute("title", "Login");
-		model.addAttribute("message", "Enter your username/password:");
-		return "loginPage";
+		
+		return "loginForm";
 	}
 
-	@RequestMapping(value = "/logoutSuccessful", method = RequestMethod.GET)
+	@RequestMapping(value = "/logout", method = RequestMethod.GET)
 	public String logoutSuccessfulPage(Model model) {
 		model.addAttribute("title", "Logout");
-		return "loginPage";
+		
+		return "loginForm";
 	}
 
 	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
@@ -48,7 +35,7 @@ public class MainController {
 		return "userInfoPage";
 	}
 
-	@RequestMapping(value = "/403", method = RequestMethod.GET)
+	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
 	public String accessDenied(Model model, Principal principal) {
 		model.addAttribute("title", "Access Denied!");
 
@@ -57,6 +44,6 @@ public class MainController {
 		} else {
 			model.addAttribute("msg", "You do not have permission to access this page!");
 		}
-		return "403Page";
+		return "accessDenied";
 	}
 }

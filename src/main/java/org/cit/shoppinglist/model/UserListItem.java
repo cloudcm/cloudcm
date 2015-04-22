@@ -1,0 +1,57 @@
+package org.cit.shoppinglist.model;
+
+import java.io.Serializable;
+
+public class UserListItem implements Serializable {
+
+	private static final long serialVersionUID = 1L;
+
+	private int id;
+	private int userListId;
+	private String item;
+
+	/**
+	 * @return the id
+	 */
+	public int getId() {
+		return id;
+	}
+
+	/**
+	 * @param id
+	 *            the id to set
+	 */
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	/**
+	 * @return the userListId
+	 */
+	public int getUserListId() {
+		return userListId;
+	}
+
+	/**
+	 * @param userListId
+	 *            the userListId to set
+	 */
+	public void setUserListId(int userListId) {
+		this.userListId = userListId;
+	}
+
+	/**
+	 * @return the item
+	 */
+	public String getItem() {
+		return item;
+	}
+
+	/**
+	 * @param item
+	 *            the item to set
+	 */
+	public void setItem(String item) {
+		this.item = item;
+	}
+}
