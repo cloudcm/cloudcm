@@ -9,6 +9,10 @@ import java.io.Serializable;
 public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
+	
+	// these two fields used to assign Role to user
+	public static final String ROLE_ADMIN = "ROLE_ADMIN";
+	public static final String ROLE_USER = "ROLE_USER";
 
 	private int id;
 	private String firstName;

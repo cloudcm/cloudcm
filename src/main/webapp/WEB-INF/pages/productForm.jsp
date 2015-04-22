@@ -22,8 +22,8 @@
 					<td><form:input path="price" /></td>
 				</tr>
 				<tr>
-					<td>Detail:</td>
-					<td><form:input path="detail" /></td>
+					<td>Description:</td>
+					<td><form:input path="description" /></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="Save"></td>

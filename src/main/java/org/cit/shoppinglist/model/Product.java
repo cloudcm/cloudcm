@@ -13,7 +13,7 @@ public class Product implements Serializable {
 	private int id;
 	private double price;
 	private String name;
-	private String detail;
+	private String description;
 
 	public Product() {
 
@@ -23,13 +23,13 @@ public class Product implements Serializable {
 	 * @param id
 	 * @param price
 	 * @param name
-	 * @param detail
+	 * @param description
 	 */
-	public Product(int id, double price, String name, String detail) {
+	public Product(int id, double price, String name, String description) {
 		this.id = id;
 		this.price = price;
 		this.name = name;
-		this.detail = detail;
+		this.description = description;
 	}
 
 	/**
@@ -78,17 +78,17 @@ public class Product implements Serializable {
 	}
 
 	/**
-	 * @return the detail
+	 * @return the description
 	 */
-	public String getDetail() {
-		return detail;
+	public String getDescription() {
+		return description;
 	}
 
 	/**
-	 * @param detail
-	 *            the detail to set
+	 * @param description
+	 *            the description to set
 	 */
-	public void setDetail(String detail) {
-		this.detail = detail;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 }

@@ -19,7 +19,7 @@
 				<th>No</th>
 				<th>Name</th>
 				<th>Price</th>
-				<th>Detail</th>
+				<th>Description</th>
 				<th>Action</th>
 			</tr>
 
@@ -28,7 +28,7 @@
 					<td>${status.index + 1}</td>
 					<td>${product.name}</td>
 					<td>${product.price}</td>
-					<td>${product.detail}</td>
+					<td>${product.description}</td>
 					<td><a href="editProduct?id=${product.id}">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="deleteProduct?id=${product.id}">Delete</a></td>
 
 				</tr>

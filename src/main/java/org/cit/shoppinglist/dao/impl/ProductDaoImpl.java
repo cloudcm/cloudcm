@@ -29,12 +29,12 @@ public class ProductDaoImpl implements ProductDao {
 
 		if (product.getId() > 0) {
 			// update
-			String sql = "UPDATE Product SET Name=?, Price=?, Detail=? WHERE Id=?";
-			jdbcTemplate.update(sql, product.getName(), product.getPrice(), product.getDetail(), product.getId());
+			String sql = "UPDATE Product SET Name=?, Price=?, Description=? WHERE Id=?";
+			jdbcTemplate.update(sql, product.getName(), product.getPrice(), product.getDescription(), product.getId());
 		} else {
 			// insert
-			String sql = "INSERT INTO Product (Name, Price, Detail)" + " VALUES (?, ?, ?)";
-			jdbcTemplate.update(sql, product.getName(), product.getPrice(), product.getDetail());
+			String sql = "INSERT INTO Product (Name, Price, Description)" + " VALUES (?, ?, ?)";
+			jdbcTemplate.update(sql, product.getName(), product.getPrice(), product.getDescription());
 		}
 	}
 
@@ -59,7 +59,7 @@ public class ProductDaoImpl implements ProductDao {
 					product.setId(rs.getInt("Id"));
 					product.setName(rs.getString("Name"));
 					product.setPrice(rs.getDouble("Price"));
-					product.setDetail(rs.getString("Detail"));
+					product.setDescription(rs.getString("Description"));
 
 					return product;
 				}
@@ -80,7 +80,7 @@ public class ProductDaoImpl implements ProductDao {
 				product.setId(rs.getInt("Id"));
 				product.setName(rs.getString("Name"));
 				product.setPrice(rs.getDouble("Price"));
-				product.setDetail(rs.getString("Detail"));
+				product.setDescription(rs.getString("Description"));
 
 				return product;
 			}

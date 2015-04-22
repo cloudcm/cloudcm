@@ -2,18 +2,22 @@ package org.cit.shoppinglist.model;
 
 import java.io.Serializable;
 
+/**
+ * SharedUserList Class is used to hold shared user list information
+ * 
+ */
 public class SharedUserList implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private int id;
 	private int userListId;
-	private int sharingUserId;
-	private int sharedWithUserId;
+	private int sharedByUserId;
+	private int sharedToUserId;
 
 	private UserList userList;
-	private User sharingUser;
-	private User sharedWithUser;
+	private User sharedByUser;
+	private User sharedToUser;
 
 	/**
 	 * @return the id
@@ -46,33 +50,33 @@ public class SharedUserList implements Serializable {
 	}
 
 	/**
-	 * @return the sharingUserId
+	 * @return the sharedByUserId
 	 */
-	public int getSharingUserId() {
-		return sharingUserId;
+	public int getSharedByUserId() {
+		return sharedByUserId;
 	}
 
 	/**
-	 * @param sharingUserId
-	 *            the sharingUserId to set
+	 * @param sharedByUserId
+	 *            the sharedByUserId to set
 	 */
-	public void setSharingUserId(int sharingUserId) {
-		this.sharingUserId = sharingUserId;
+	public void setSharedByUserId(int sharedByUserId) {
+		this.sharedByUserId = sharedByUserId;
 	}
 
 	/**
-	 * @return the sharedWithUserId
+	 * @return the sharedToUserId
 	 */
-	public int getSharedWithUserId() {
-		return sharedWithUserId;
+	public int getSharedToUserId() {
+		return sharedToUserId;
 	}
 
 	/**
-	 * @param sharedWithUserId
-	 *            the sharedWithUserId to set
+	 * @param sharedToUserId
+	 *            the sharedToUserId to set
 	 */
-	public void setSharedWithUserId(int sharedWithUserId) {
-		this.sharedWithUserId = sharedWithUserId;
+	public void setSharedToUserId(int sharedToUserId) {
+		this.sharedToUserId = sharedToUserId;
 	}
 
 	/**
@@ -91,33 +95,32 @@ public class SharedUserList implements Serializable {
 	}
 
 	/**
-	 * @return the sharingUser
+	 * @return the sharedByUser
 	 */
-	public User getSharingUser() {
-		return sharingUser;
+	public User getSharedByUser() {
+		return sharedByUser;
 	}
 
 	/**
-	 * @param sharingUser
-	 *            the sharingUser to set
+	 * @param sharedByUser
+	 *            the sharedByUser to set
 	 */
-	public void setSharingUser(User sharingUser) {
-		this.sharingUser = sharingUser;
+	public void setSharedByUser(User sharedByUser) {
+		this.sharedByUser = sharedByUser;
 	}
 
 	/**
-	 * @return the sharedWithUser
+	 * @return the sharedToUser
 	 */
-	public User getSharedWithUser() {
-		return sharedWithUser;
+	public User getSharedToUser() {
+		return sharedToUser;
 	}
 
 	/**
-	 * @param sharedWithUser
-	 *            the sharedWithUser to set
+	 * @param sharedToUser
+	 *            the sharedToUser to set
 	 */
-	public void setSharedWithUser(User sharedWithUser) {
-		this.sharedWithUser = sharedWithUser;
+	public void setSharedToUser(User sharedToUser) {
+		this.sharedToUser = sharedToUser;
 	}
-
 }

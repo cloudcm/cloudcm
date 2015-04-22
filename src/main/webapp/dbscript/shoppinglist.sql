@@ -96,8 +96,7 @@ CREATE TABLE `User` (
 --
 
 LOCK TABLES `User` WRITE;
-/*!40000 ALTER TABLE `user` DISABLE KEYS */;
-/*!40000 ALTER TABLE `user` ENABLE KEYS */;
+INSERT INTO `User` (`FirstName`, `LastName`, `Username`, `Password`, `Enabled`) VALUES ('Site', 'Admin', 'admin', '12345', 1);
 UNLOCK TABLES;
 
 --
@@ -176,8 +175,8 @@ CREATE TABLE `UserRole` (
 --
 
 LOCK TABLES `UserRole` WRITE;
-/*!40000 ALTER TABLE `userrole` DISABLE KEYS */;
-/*!40000 ALTER TABLE `userrole` ENABLE KEYS */;
+INSERT INTO `UserRole` (`UserId`, `Role`) VALUES (1, 'ROLE_USER');
+INSERT INTO `UserRole` (`UserId`, `Role`) VALUES (1, 'ROLE_ADMIN');
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
