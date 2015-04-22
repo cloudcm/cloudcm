@@ -8,13 +8,12 @@
 </head>
 
 <body>
-	<h2>Message : ${message}</h2>
+	<c:import url="includes/header.jsp"></c:import>
 
-	<c:if test="${pageContext.request.userPrincipal.name != null}">
-		<h3>
-			User Info : ${pageContext.request.userPrincipal.name} | <a href="<c:url value="/logout" />">Logout</a>
-		</h3>
-	</c:if>
+	<h2>Message : ${message}</h2>
+	
+	<a href="<c:url value="/admin/products" />">Show Products</a>
+	
 </body>
 
 </html>

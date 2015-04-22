@@ -10,6 +10,10 @@
 	<form name='f' action="j_spring_security_check" method='POST'>
 		<table>
 			<tr>
+				<td colspan="2">${message}</td>
+			</tr>
+			
+			<tr>
 				<td>User:</td>
 				<td><input type='text' name='username' value=''></td>
 			</tr>

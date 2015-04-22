@@ -9,6 +9,8 @@
 <title>Product Manager Home</title>
 </head>
 <body>
+	<c:import url="includes/header.jsp"></c:import>
+	
 	<div align="center">
 		<h1>Product List</h1>
 		<h3>

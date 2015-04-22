@@ -14,8 +14,8 @@
 		<intercept-url pattern="/logout" access="isAnonymous()" />
 
 		<intercept-url pattern="/userInfo" access="hasAnyRole('ROLE_USER', 'ROLE_ADMIN')" />
-		<intercept-url pattern="/products" access="hasRole('ROLE_ADMIN')" />
-		<intercept-url pattern="/newProduct" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/admin/products" access="hasRole('ROLE_ADMIN')" />
+		<intercept-url pattern="/admin/newProduct" access="hasRole('ROLE_ADMIN')" />
 		<intercept-url pattern="/other/**" access="isAuthenticated()" />
 
 		<access-denied-handler error-page="/403" />

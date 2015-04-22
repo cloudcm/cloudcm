@@ -2,17 +2,25 @@ package org.cit.shoppinglist.model;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Min;
+import javax.validation.constraints.Size;
+
 /**
  * Product Class is used to hold product information
  * 
  */
-public class Product implements Serializable {
+public class Product{
 
-	private static final long serialVersionUID = 1L;
 
 	private int id;
+	
+	@Min(1)
 	private double price;
+	
+	@Size(min=1,max=20, message="Name can not be empty")
 	private String name;
+	
+	@Size(min=1,max=20, message="Description can not be empty")
 	private String description;
 
 	public Product() {
