@@ -1,7 +1,9 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
    "http://www.w3.org/TR/html4/loose.dtd">
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 
 <html>
 <head>
@@ -12,32 +14,46 @@
 	<c:import url="includes/header.jsp"></c:import>
 	
 	<div align="center">
+		
+		
+		<form:form action="addUserListItem" method="post" commandName="newUserListItem">
+			<table>
+				<form:hidden path="id" />
+				<tr>
+					<td>Insert Item in List:</td>
+					<td><form:input path="item" /></td>
+					<td><input type="submit" value="Add Item"></td>
+				</tr>
+			</table>
+			
+			<form:hidden path="userListId"/>
+			
+			<form:errors path="item" />
+		</form:form>
+		
 		<h1>Your Shopping List</h1>
-		<h3>
-			<a href="newProduct">Add New Item</a>
-		</h3>
-		<%-- <table border="1">
+		
+		<table border="1" cellpadding="5" cellspacing="3">
 			<tr>
 				<th>No</th>
-				<th>Name</th>
-				<th>Price</th>
-				<th>Description</th>
+				<th>Purchased</th>
+				<th>Item</th>
 				<th>Action</th>
 			</tr>
 
-			<c:forEach var="product" items="${productList}" varStatus="status">
+			<c:forEach var="userListItem" items="${userListItems}" varStatus="status">
 				<tr>
 					<td>${status.index + 1}</td>
-					<td>${product.name}</td>
-					<td>${product.price}</td>
-					<td>${product.description}</td>
-					<td><a href="editProduct?id=${product.id}">Edit</a> &nbsp;&nbsp;&nbsp;&nbsp; <a href="deleteProduct?id=${product.id}">Delete</a></td>
+					<td>${userListItem.purchased}</td>
+					<td>${userListItem.item}</td>
+					<td>
+						<!--  <a href="editProduct?id=${product.id}">Edit</a> &nbsp;&nbsp; -->
+						<a href="deleteUserListItem?id=${userListItem.id}">Delete</a>
+					</td>
 
 				</tr>
 			</c:forEach>
-		</table> --%>
-		
-		<a href="<c:url value="/admin/products" />">Show Products</a>
+		</table>
 	</div>
 </body>
 </html>

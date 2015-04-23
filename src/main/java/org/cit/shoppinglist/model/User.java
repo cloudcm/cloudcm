@@ -2,6 +2,8 @@ package org.cit.shoppinglist.model;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * User Class is used to hold user information
  * 
@@ -15,11 +17,20 @@ public class User implements Serializable {
 	public static final String ROLE_USER = "ROLE_USER";
 
 	private int id;
+	
+	@NotEmpty(message="First Name can not be empty")
 	private String firstName;
+	
+	@NotEmpty(message="Last Name can not be empty")
 	private String lastName;
+	
+	@NotEmpty(message="Username can not be empty")
 	private String username;
+	
+	@NotEmpty(message="Password can not be empty")
 	private String password;
-	private Short enabled;
+	
+	private boolean enabled;
 
 	public User() {
 
@@ -33,13 +44,13 @@ public class User implements Serializable {
 	 * @param password
 	 * @param enabled
 	 */
-	public User(int id, String firstName, String lastName, String username, String password, Short enabled) {
+	public User(int id, String firstName, String lastName, String username, String password, boolean enabled) {
 		this.id = id;
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.username = username;
 		this.password = password;
-		this.enabled = enabled;
+		this.setEnabled(enabled);
 	}
 
 	/**
@@ -120,15 +131,14 @@ public class User implements Serializable {
 	/**
 	 * @return the enabled
 	 */
-	public Short getEnabled() {
+	public boolean isEnabled() {
 		return enabled;
 	}
 
 	/**
-	 * @param enabled
-	 *            the enabled to set
+	 * @param enabled the enabled to set
 	 */
-	public void setEnabled(Short enabled) {
+	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
 	}
 }

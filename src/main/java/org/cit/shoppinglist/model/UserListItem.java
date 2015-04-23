@@ -2,12 +2,17 @@ package org.cit.shoppinglist.model;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 public class UserListItem implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
 	private int id;
 	private int userListId;
+	private boolean purchased;
+	
+	@NotEmpty(message="Item can not be empty")
 	private String item;
 
 	/**
@@ -53,5 +58,19 @@ public class UserListItem implements Serializable {
 	 */
 	public void setItem(String item) {
 		this.item = item;
+	}
+
+	/**
+	 * @return the purchased
+	 */
+	public boolean isPurchased() {
+		return purchased;
+	}
+
+	/**
+	 * @param purchased the purchased to set
+	 */
+	public void setPurchased(boolean purchased) {
+		this.purchased = purchased;
 	}
 }

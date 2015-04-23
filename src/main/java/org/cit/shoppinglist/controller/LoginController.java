@@ -2,6 +2,7 @@ package org.cit.shoppinglist.controller;
 
 import java.security.Principal;
 
+import org.cit.shoppinglist.model.User;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,17 +25,6 @@ public class LoginController {
 		return "loginForm";
 	}
 
-	@RequestMapping(value = "/userInfo", method = RequestMethod.GET)
-	public String loginPage(Model model, Principal principal) {
-		model.addAttribute("title", "User Info");
-
-		String userName = principal.getName();
-
-		model.addAttribute("message", "User Info - This is protected page!. Hello " + userName);
-
-		return "userInfoPage";
-	}
-
 	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
 	public String accessDenied(Model model, Principal principal) {
 		model.addAttribute("title", "Access Denied!");
@@ -45,5 +35,13 @@ public class LoginController {
 			model.addAttribute("msg", "You do not have permission to access this page!");
 		}
 		return "accessDenied";
+	}
+	
+	@RequestMapping(value = "/signup", method = RequestMethod.GET)
+	public String signupPage(Model model) {
+		User user = new User();
+		model.addAttribute("user", user);
+		
+		return "signupForm";
 	}
 }
