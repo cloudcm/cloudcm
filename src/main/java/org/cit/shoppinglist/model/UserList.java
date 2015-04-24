@@ -15,7 +15,6 @@ public class UserList implements Serializable {
 	private int id;
 	private int userId;
 	private String name;
-	private User user;
 	private List<UserListItem> userListItems = new ArrayList<UserListItem>();
 
 	public UserList() {
@@ -29,11 +28,10 @@ public class UserList implements Serializable {
 	 * @param user
 	 * @param products
 	 */
-	public UserList(int id, int userId, String name, User user, List<UserListItem> userListItems) {
+	public UserList(int id, int userId, String name, List<UserListItem> userListItems) {
 		this.id = id;
 		this.userId = userId;
 		this.name = name;
-		this.user = user;
 		this.userListItems = userListItems;
 	}
 
@@ -80,20 +78,6 @@ public class UserList implements Serializable {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	/**
-	 * @return the user
-	 */
-	public User getUser() {
-		return user;
-	}
-
-	/**
-	 * @param user the user to set
-	 */
-	public void setUser(User user) {
-		this.user = user;
 	}
 
 	/**

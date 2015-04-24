@@ -10,6 +10,7 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.cit.shoppinglist.dao.UserListDao;
+import org.cit.shoppinglist.model.SharedUserList;
 import org.cit.shoppinglist.model.UserList;
 import org.cit.shoppinglist.model.UserListItem;
 import org.springframework.dao.DataAccessException;
@@ -119,6 +120,26 @@ public class UserListDaoImpl implements UserListDao {
 			String sql = "INSERT INTO UserListItem (UserListId, Item, Purchased) VALUES (?, ?, ?)";
 			jdbcTemplate.update(sql, userListItem.getUserListId(), userListItem.getItem(), userListItem.isPurchased());
 		}
-		
 	}
+	
+	@Override
+	public void saveSharedUserList(SharedUserList sharedUserList) {
+		jdbcTemplate = new JdbcTemplate(dataSource);
+		
+		// insert UserListItem
+		String sql = "INSERT INTO SharedUserList (UserListId, sharedByUserId, sharedToUserId) VALUES (?, ?, ?)";
+		jdbcTemplate.update(sql, sharedUserList.getUserListId(), sharedUserList.getSharedByUserId(), sharedUserList.getSharedToUserId());
+	}
+	
+	@Override
+	public boolean checkListSharedToUser(int userListId, int userId) {
+		jdbcTemplate = new JdbcTemplate(dataSource);
+		//String sql = "SELECT * FROM SharedUserList WHERE SharedToUserId =" + userId + " AND UserListId = " + userListId;
+		String sql = "SELECT EXISTS(SELECT * FROM  SharedUserList WHERE SharedByUserId = " + userId + " AND UserListId = " + userListId + ")";
+		
+		Boolean isListShared = jdbcTemplate.queryForObject(sql, Boolean.class);
+		
+		return isListShared;
+	}
+	
 }

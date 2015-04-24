@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.cit.shoppinglist.dao.UserDao;
 import org.cit.shoppinglist.dao.UserListDao;
+import org.cit.shoppinglist.model.SharedUserList;
 import org.cit.shoppinglist.model.User;
 import org.cit.shoppinglist.model.UserList;
 import org.cit.shoppinglist.model.UserListItem;
@@ -77,7 +78,44 @@ public class UserServiceImpl implements UserService {
 	
 	@Override
 	public void saveUserListItem(UserListItem userListItem) {
-		userListDao.saveUserListItem(userListItem);
+		try {
+			log.info("Saving UserList");
+			
+			userListDao.saveUserListItem(userListItem);
+			
+		} catch (Exception ex) {
+			log.error("Error in Saving UserList");
+			ex.printStackTrace();
+		}
+		
+	}
+	
+	@Override
+	public boolean checkListSharedToUser(int userListId, int userId) {
+		try {
+			log.info("Saving SharedUserList");
+			
+			return userListDao.checkListSharedToUser(userListId, userId);
+			
+		} catch (Exception ex) {
+			log.error("Error in Saving SharedUserList");
+			ex.printStackTrace();
+		}
+		
+		return false;
+	}
+	
+	@Override
+	public void saveSharedUserList(SharedUserList sharedUserList) {
+		try {
+			log.info("Saving SharedUserList");
+			
+			userListDao.saveSharedUserList(sharedUserList);
+			
+		} catch (Exception ex) {
+			log.error("Error in Saving SharedUserList");
+			ex.printStackTrace();
+		}
 	}
 
 	private UserList getUserListFromUser(User user) {

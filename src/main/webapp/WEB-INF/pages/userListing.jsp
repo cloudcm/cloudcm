@@ -15,8 +15,27 @@
 	
 	<div align="center">
 		
+		<h2>Share your list with others</h2>
+		<form:form action="shareUserList" method="post" commandName="sharedUserList">
+			<table>
+				<form:hidden path="id" />
+				<tr>
+					<td>Type Username to share your list:</td>
+					<td><form:input path="shareToUsername" /></td>
+					<td><input type="submit" value="Share"></td>
+				</tr>
+			</table>
+			
+			<form:hidden path="userListId"/>
+			<form:hidden path="sharedByUserId"/>
+			
+			<form:errors path="shareToUsername" />
+		</form:form>
+		
+		<br/><br/>
 		
 		<form:form action="addUserListItem" method="post" commandName="newUserListItem">
+			
 			<table>
 				<form:hidden path="id" />
 				<tr>
@@ -29,7 +48,10 @@
 			<form:hidden path="userListId"/>
 			
 			<form:errors path="item" />
+			
 		</form:form>
+		
+		
 		
 		<h1>Your Shopping List</h1>
 		

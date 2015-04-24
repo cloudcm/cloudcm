@@ -2,6 +2,8 @@ package org.cit.shoppinglist.model;
 
 import java.io.Serializable;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * SharedUserList Class is used to hold shared user list information
  * 
@@ -14,10 +16,9 @@ public class SharedUserList implements Serializable {
 	private int userListId;
 	private int sharedByUserId;
 	private int sharedToUserId;
-
-	private UserList userList;
-	private User sharedByUser;
-	private User sharedToUser;
+	
+	@NotEmpty(message = "Username can not be empty")
+	private String shareToUsername;
 
 	/**
 	 * @return the id
@@ -80,47 +81,16 @@ public class SharedUserList implements Serializable {
 	}
 
 	/**
-	 * @return the userList
+	 * @return the shareToUsername
 	 */
-	public UserList getUserList() {
-		return userList;
+	public String getShareToUsername() {
+		return shareToUsername;
 	}
 
 	/**
-	 * @param userList
-	 *            the userList to set
+	 * @param shareToUsername the shareToUsername to set
 	 */
-	public void setUserList(UserList userList) {
-		this.userList = userList;
-	}
-
-	/**
-	 * @return the sharedByUser
-	 */
-	public User getSharedByUser() {
-		return sharedByUser;
-	}
-
-	/**
-	 * @param sharedByUser
-	 *            the sharedByUser to set
-	 */
-	public void setSharedByUser(User sharedByUser) {
-		this.sharedByUser = sharedByUser;
-	}
-
-	/**
-	 * @return the sharedToUser
-	 */
-	public User getSharedToUser() {
-		return sharedToUser;
-	}
-
-	/**
-	 * @param sharedToUser
-	 *            the sharedToUser to set
-	 */
-	public void setSharedToUser(User sharedToUser) {
-		this.sharedToUser = sharedToUser;
+	public void setShareToUsername(String shareToUsername) {
+		this.shareToUsername = shareToUsername;
 	}
 }

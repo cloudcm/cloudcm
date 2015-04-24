@@ -3,9 +3,10 @@ package org.cit.shoppinglist.controller;
 import java.security.Principal;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
-import org.cit.shoppinglist.model.Product;
+import org.cit.shoppinglist.model.SharedUserList;
 import org.cit.shoppinglist.model.User;
 import org.cit.shoppinglist.model.UserList;
 import org.cit.shoppinglist.model.UserListItem;
@@ -31,16 +32,23 @@ public class UserController {
             return "signupForm";
         }
 		
+		User tempUser = userService.getUserByUsername(user.getUsername());
+		
+		if(tempUser != null) {
+			bindingResult.rejectValue("username", "error.user", "An account already exists for this Username.");
+			return "signupForm";
+		}
+ 		
 		userService.createUser(user);
 		
 		return "redirect:/login";
 	}
 
 	@RequestMapping(value = "/userList", method = RequestMethod.GET)
-	public String showUserListingPage(Model model, Principal principal) {
-		String username = principal.getName();
+	public String showUserListingPage(Model model, Principal principal, HttpSession session) {
 		
-		User user = userService.getUserByUsername(username);
+		User user = getLoggedInUser(principal, session);
+		
 		UserList userList = userService.getUserListByUserId(user.getId());
 		
 		model.addAttribute("userList", userList);
@@ -50,18 +58,22 @@ public class UserController {
 		newUserListItem.setUserListId(userList.getId());
 		
 		model.addAttribute("newUserListItem", newUserListItem);
+		
+		SharedUserList sharedUserList = new SharedUserList();
+		sharedUserList.setUserListId(userList.getId());
+		sharedUserList.setSharedByUserId(user.getId());
+		
+		model.addAttribute("sharedUserList", sharedUserList);
 
 		return "userListing";
 	}
-	
+
 	@RequestMapping(value = "/addUserListItem", method = RequestMethod.POST)
-	public String addItemToUserList(@Valid UserListItem userListItem, BindingResult bindingResult) {
+	public String addItemToUserList(@Valid UserListItem userListItem, BindingResult bindingResult, HttpSession session) {
 		
 		if (bindingResult.hasErrors()) {
-            return "userListing";
+			return "redirect:/user/userList";
         }
-		
-		userService.saveUserListItem(userListItem);
 		
 		return "redirect:/user/userList";
 	}
@@ -72,5 +84,44 @@ public class UserController {
 		userService.deleteUserListItem(userListItemId);
 		
 		return "redirect:/user/userList";
+	}
+	
+	@RequestMapping(value = "/shareUserList", method = RequestMethod.POST)
+	public String shareUserListToOtherContact(@Valid SharedUserList sharedUserList, BindingResult bindingResult) {
+		
+		if (bindingResult.hasErrors()) {
+            return "userListing";
+        }
+		
+		User user = userService.getUserByUsername(sharedUserList.getShareToUsername());
+		
+		if(user != null) {
+			
+			sharedUserList.setSharedToUserId(user.getId());
+			
+			boolean isListShared = userService.checkListSharedToUser(sharedUserList.getUserListId(), sharedUserList.getSharedToUserId());
+			
+			if(isListShared) {
+				bindingResult.rejectValue("shareToUsername", "error.sharedUserList", "Your list already shared with " + sharedUserList.getShareToUsername());
+				return "userListing";
+			}
+			
+			userService.saveSharedUserList(sharedUserList);
+		}
+		
+		return "redirect:/user/userList";
+	}
+	
+	private User getLoggedInUser(Principal principal, HttpSession session) {
+		User user = null;
+		
+		if(session.getAttribute("loggedInUser") == null) {
+			String username = principal.getName();
+			user = userService.getUserByUsername(username);
+		} else {
+			user = (User) session.getAttribute("loggedInUser");
+		}
+		
+		return user;
 	}
 }
