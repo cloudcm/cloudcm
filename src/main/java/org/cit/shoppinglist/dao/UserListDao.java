@@ -21,4 +21,14 @@ public interface UserListDao {
 	void saveSharedUserList(SharedUserList sharedUserList);
 
 	boolean checkListSharedToUser(int userListId, int userId);
+	
+	/**
+	 * getSharedUserListsByUserId method will fetch all shared userLists of 
+	 * 		the given userId
+	 * @param userId
+	 * 		specifies userId
+	 * @return
+	 * 		list of shared userLists
+	 */
+	List<UserList> getSharedUserListsByUserId(int userId);
 }

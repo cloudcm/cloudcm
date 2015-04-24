@@ -127,4 +127,17 @@ public class UserServiceImpl implements UserService {
 		
 		return userList;
 	}
+
+	@Override
+	public List<UserList> getSharedUserListsByUserId(int userId) {
+		List<UserList> userLists = userListDao.getSharedUserListsByUserId(userId);
+		
+		// fetch and set userListItems to each userList
+		for(UserList userList : userLists){
+			List<UserListItem> userListItems = userListDao.getUserListItemsByUserListId(userList.getId());
+			userList.setUserListItems(userListItems);
+		}
+		
+		return userLists;
+	}
 }

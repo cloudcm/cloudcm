@@ -1,6 +1,8 @@
 package org.cit.shoppinglist.service;
 
 import org.cit.shoppinglist.model.SharedUserList;
+import java.util.List;
+
 import org.cit.shoppinglist.model.User;
 import org.cit.shoppinglist.model.UserList;
 import org.cit.shoppinglist.model.UserListItem;
@@ -21,5 +23,13 @@ public interface UserService {
 	
 	void saveSharedUserList(SharedUserList sharedUserList);
 
-	
+	/**
+	 * getSharedUserListsByUserId method will fetch all shared userLists of 
+	 * 		the given userId
+	 * @param userId
+	 * 		specifies userId
+	 * @return
+	 * 		list of shared userLists
+	 */
+	List<UserList> getSharedUserListsByUserId(int userId);
 }
