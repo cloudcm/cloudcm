@@ -16,4 +16,14 @@ public interface UserListDao {
 	void deleteUserListItem(int userListItemId);
 
 	void saveUserListItem(UserListItem userListItem);
+	
+	/**
+	 * getSharedUserListsByUserId method will fetch all shared userLists of 
+	 * 		the given userId
+	 * @param userId
+	 * 		specifies userId
+	 * @return
+	 * 		list of shared userLists
+	 */
+	List<UserList> getSharedUserListsByUserId(int userId);
 }

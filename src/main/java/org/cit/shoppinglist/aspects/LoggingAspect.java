@@ -11,7 +11,10 @@ public class LoggingAspect {
 	
 	private Logger logger = Logger.getLogger(getClass());
 	
-	@Before("execution(* org.cit.shoppinglist.service.*.*(..))")
+	// The following example will execute before every method available 
+	// in the classes under the package org.cit.shoppinglist.service
+	//@Before("execution(* org.cit.shoppinglist.service.*.*(..))")
+	@Before("execution(* org.cit.shoppinglist.service.ProductService.*(..))")
 	public void traceSave(JoinPoint point){
 		String name = point.getSignature().getName();
 		logger.info("method "+name +" called of class "  + point.getTarget());
@@ -22,10 +25,13 @@ public class LoggingAspect {
 		logger.info("A business method has been accessed.");
 	}
 	
-	@Before("daoMethod()")
-	public void monitorDataAccessLayer(){
-		logger.info("A data access layer method has accessed.");
-	}
+	// The following example defines a pointcut named 'daoMethod' 
+	// that will match the execution of every method available in the classes under the package
+	// name contains dao
+//	@Before("daoMethod()")
+//	public void monitorDataAccessLayer(){
+//		logger.info("A data access layer method has accessed.");
+//	}
 	
 	@Before("presentationMethod()")
 	public void monitorPresentationLayer(){
@@ -36,9 +42,9 @@ public class LoggingAspect {
 	public void serviceMethod(){
 	}
 	
-	@Pointcut("execution(* *..dao.*.*(..))")
-	public void daoMethod(){
-	}
+//	@Pointcut("execution(* *..dao.*.*(..))")
+//	public void daoMethod(){
+//	}
 	
 	@Pointcut("execution(* *..controller.*.*(..))")
 	public void presentationMethod(){
