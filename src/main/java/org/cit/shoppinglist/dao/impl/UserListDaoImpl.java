@@ -5,7 +5,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.sql.DataSource;
@@ -44,10 +43,8 @@ public class UserListDaoImpl implements UserListDao {
 		jdbcTemplate.update(new PreparedStatementCreator() {
 
 			@Override
-			public PreparedStatement createPreparedStatement(
-					Connection connection) throws SQLException {
-				PreparedStatement ps = connection.prepareStatement(
-						sql.toString(), Statement.RETURN_GENERATED_KEYS);
+			public PreparedStatement createPreparedStatement(Connection connection) throws SQLException {
+				PreparedStatement ps = connection.prepareStatement(sql.toString(), Statement.RETURN_GENERATED_KEYS);
 				ps.setString(1, userList.getName());
 				ps.setInt(2, userList.getUserId());
 				return ps;
@@ -66,8 +63,7 @@ public class UserListDaoImpl implements UserListDao {
 
 		return jdbcTemplate.query(sql, new ResultSetExtractor<UserList>() {
 
-			public UserList extractData(ResultSet rs) throws SQLException,
-					DataAccessException {
+			public UserList extractData(ResultSet rs) throws SQLException, DataAccessException {
 				if (rs.next()) {
 					UserList userList = new UserList();
 					userList.setId(rs.getInt("Id"));
@@ -86,23 +82,20 @@ public class UserListDaoImpl implements UserListDao {
 	public List<UserListItem> getUserListItemsByUserListId(int userListId) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 
-		String sql = "SELECT * FROM UserListItem WHERE UserListId = "
-				+ userListId;
+		String sql = "SELECT * FROM UserListItem WHERE UserListId = " + userListId;
 
-		List<UserListItem> userListItems = jdbcTemplate.query(sql,
-				new RowMapper<UserListItem>() {
+		List<UserListItem> userListItems = jdbcTemplate.query(sql, new RowMapper<UserListItem>() {
 
-					public UserListItem mapRow(ResultSet rs, int rowNum)
-							throws SQLException {
-						UserListItem userListItem = new UserListItem();
-						userListItem.setId(rs.getInt("Id"));
-						userListItem.setItem(rs.getString("Item"));
-						userListItem.setUserListId(rs.getInt("UserListId"));
-						userListItem.setPurchased(rs.getBoolean("Purchased"));
+			public UserListItem mapRow(ResultSet rs, int rowNum) throws SQLException {
+				UserListItem userListItem = new UserListItem();
+				userListItem.setId(rs.getInt("Id"));
+				userListItem.setItem(rs.getString("Item"));
+				userListItem.setUserListId(rs.getInt("UserListId"));
+				userListItem.setPurchased(rs.getBoolean("Purchased"));
 
-						return userListItem;
-					}
-				});
+				return userListItem;
+			}
+		});
 
 		return userListItems;
 	}
@@ -121,21 +114,18 @@ public class UserListDaoImpl implements UserListDao {
 
 		if (userListItem.getId() > 0) {
 			String sql = "UPDATE UserListItem SET UserListId=?, Item=?, Purshased=? WHERE Id = ?";
-			jdbcTemplate.update(sql, userListItem.getUserListId(),
-					userListItem.getItem(), userListItem.isPurchased(),
-					userListItem.getId());
+			jdbcTemplate.update(sql, userListItem.getUserListId(), userListItem.getItem(), userListItem.isPurchased(), userListItem.getId());
 		} else {
 			// insert UserListItem
 			String sql = "INSERT INTO UserListItem (UserListId, Item, Purchased) VALUES (?, ?, ?)";
-			jdbcTemplate.update(sql, userListItem.getUserListId(),
-					userListItem.getItem(), userListItem.isPurchased());
+			jdbcTemplate.update(sql, userListItem.getUserListId(), userListItem.getItem(), userListItem.isPurchased());
 		}
 	}
-	
+
 	@Override
 	public void saveSharedUserList(SharedUserList sharedUserList) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		
+
 		// insert UserListItem
 		String sql = "INSERT INTO SharedUserList (UserListId, sharedByUserId, sharedToUserId) VALUES (?, ?, ?)";
 		jdbcTemplate.update(sql, sharedUserList.getUserListId(), sharedUserList.getSharedByUserId(), sharedUserList.getSharedToUserId());
@@ -145,36 +135,33 @@ public class UserListDaoImpl implements UserListDao {
 	@Override
 	public List<UserList> getSharedUserListsByUserId(int userId) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT us.* FROM UserList ul,SharedUserList sul WHERE sul.UserListId = ul.Id and sul.UserId = "
-				+ userId;
-		return jdbcTemplate.query(sql,
-				new ResultSetExtractor<List<UserList>>() {
-			//ResultSetExtractor interface used to fetch 
-			//records from the database. It accepts a ResultSet 
-			//and returns the list.
-					@Override
-					public List<UserList> extractData(ResultSet rs)
-							throws SQLException, DataAccessException {
+		String sql = "SELECT ul.* FROM UserList ul,SharedUserList sul WHERE sul.UserListId = ul.Id and sul.SharedToUserId = " + userId;
 
-						List<UserList> list = new ArrayList<UserList>();
-						while (rs.next()) {
-							UserList e = new UserList();
-							list.add(e);
-						}
-						return list;
-					}
-				});
+		List<UserList> userList = jdbcTemplate.query(sql, new RowMapper<UserList>() {
+
+			public UserList mapRow(ResultSet rs, int rowNum) throws SQLException {
+				UserList userList = new UserList();
+				userList.setId(rs.getInt("Id"));
+				userList.setUserId(rs.getInt("UserId"));
+				userList.setName(rs.getString("Name"));
+				
+				return userList;
+			}
+		});
+		
+		return userList;
 	}
-	
+
 	@Override
 	public boolean checkListSharedToUser(int userListId, int userId) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		//String sql = "SELECT * FROM SharedUserList WHERE SharedToUserId =" + userId + " AND UserListId = " + userListId;
-		String sql = "SELECT EXISTS(SELECT * FROM  SharedUserList WHERE SharedByUserId = " + userId + " AND UserListId = " + userListId + ")";
-		
+		// String sql = "SELECT * FROM SharedUserList WHERE SharedToUserId =" +
+		// userId + " AND UserListId = " + userListId;
+		String sql = "SELECT EXISTS(SELECT * FROM  SharedUserList WHERE SharedToUserId = " + userId + " AND UserListId = " + userListId + ")";
+
 		Boolean isListShared = jdbcTemplate.queryForObject(sql, Boolean.class);
-		
+
 		return isListShared;
 	}
-	
+
 }

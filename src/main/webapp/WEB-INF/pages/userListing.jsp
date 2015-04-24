@@ -14,48 +14,54 @@
 	<c:import url="includes/header.jsp"></c:import>
 	
 	<div align="center">
+	
+		<h3>Want to See Lists Shared with You? <a href="<c:url value="/user/sharedUserList" />">Click Here</a></h3>
 		
-		<h2>Share your list with others</h2>
-		<form:form action="shareUserList" method="post" commandName="sharedUserList">
-			<table>
-				<form:hidden path="id" />
-				<tr>
-					<td>Type Username to share your list:</td>
-					<td><form:input path="shareToUsername" /></td>
-					<td><input type="submit" value="Share"></td>
-				</tr>
-			</table>
-			
-			<form:hidden path="userListId"/>
-			<form:hidden path="sharedByUserId"/>
-			
-			<form:errors path="shareToUsername" />
-		</form:form>
+		<div style="border: 1px solid #000; width:60%; padding: 1em;">
+			<h2 style="margin-top: 0;">Share your list with others</h2>
+			<form:form action="shareUserList" method="post" commandName="sharedUserList">
+				<table>
+					<form:hidden path="id" />
+					<tr>
+						<td>Type Username to share your list:</td>
+						<td><form:input path="shareToUsername" /></td>
+						<td><input type="submit" value="Share"></td>
+					</tr>
+				</table>
+				
+				<form:hidden path="userListId"/>
+				<form:hidden path="sharedByUserId"/>
+				
+				<b style="color:red"><c:out value="${shareToUsernameMessage}"/></b>
+			</form:form>
+		</div>
 		
 		<br/><br/>
 		
-		<form:form action="addUserListItem" method="post" commandName="newUserListItem">
-			
-			<table>
-				<form:hidden path="id" />
-				<tr>
-					<td>Insert Item in List:</td>
-					<td><form:input path="item" /></td>
-					<td><input type="submit" value="Add Item"></td>
-				</tr>
-			</table>
-			
-			<form:hidden path="userListId"/>
-			
-			<form:errors path="item" />
-			
-		</form:form>
+		<div style="border: 1px solid #000; width:60%; padding: 1em;">
+			<form:form action="addUserListItem" method="post" commandName="newUserListItem">
+				
+				<table>
+					<form:hidden path="id" />
+					<tr>
+						<td>Insert Item in List:</td>
+						<td><form:input path="item" /></td>
+						<td><input type="submit" value="Add Item"></td>
+					</tr>
+				</table>
+				
+				<form:hidden path="userListId"/>
+				
+				<b style="color:red"><c:out value="${userListItemMessage}"/></b>
+				
+			</form:form>
+		</div>
 		
 		
 		
 		<h1>Your Shopping List</h1>
 		
-		<table border="1" cellpadding="5" cellspacing="3">
+		<table border="1" cellpadding="5" cellspacing="3" style="width: 50%;">
 			<tr>
 				<th>No</th>
 				<th>Purchased</th>
@@ -68,7 +74,7 @@
 					<td>${status.index + 1}</td>
 					<td>${userListItem.purchased}</td>
 					<td>${userListItem.item}</td>
-					<td>
+					<td style=" text-align: center;">
 						<!--  <a href="editProduct?id=${product.id}">Edit</a> &nbsp;&nbsp; -->
 						<a href="deleteUserListItem?id=${userListItem.id}">Delete</a>
 					</td>

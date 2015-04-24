@@ -21,22 +21,22 @@
 				<tr>
 					<td>First Name:</td>
 					<td><form:input path="firstName" /></td>
-					<td><form:errors path="firstName" /></td>
+					<td><b style="color:red"><form:errors path="firstName" /></b></td>
 				</tr>
 				<tr>
 					<td>Last Name:</td>
 					<td><form:input path="lastName" /></td>
-					<td><form:errors path="lastName" /></td>
+					<td><b style="color:red"><form:errors path="lastName" /></b></td>
 				</tr>
 				<tr>
 					<td>Username:</td>
 					<td><form:input path="username" /></td>
-					<td><form:errors path="username" /></td>
+					<td><b style="color:red"><form:errors path="username" /></b></td>
 				</tr>
 				<tr>
 					<td>Password:</td>
 					<td><form:password path="password" /></td>
-					<td><form:errors path="password" /></td>
+					<td><b style="color:red"><form:errors path="password" /></b></td>
 				</tr>
 				<tr>
 					<td colspan="2" align="center"><input type="submit" value="Sign Up"></td>

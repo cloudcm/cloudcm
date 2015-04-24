@@ -1,6 +1,7 @@
 package org.cit.shoppinglist.controller;
 
 import java.security.Principal;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -71,9 +72,14 @@ public class UserController {
 	@RequestMapping(value = "/addUserListItem", method = RequestMethod.POST)
 	public String addItemToUserList(@Valid UserListItem userListItem, BindingResult bindingResult, HttpSession session) {
 		
+		session.removeAttribute("userListItemMessage");
+		
 		if (bindingResult.hasErrors()) {
+			session.setAttribute("userListItemMessage", "Item can not be empty");
 			return "redirect:/user/userList";
         }
+		
+		userService.saveUserListItem(userListItem);
 		
 		return "redirect:/user/userList";
 	}
@@ -87,11 +93,20 @@ public class UserController {
 	}
 	
 	@RequestMapping(value = "/shareUserList", method = RequestMethod.POST)
-	public String shareUserListToOtherContact(@Valid SharedUserList sharedUserList, BindingResult bindingResult) {
+	public String shareUserListToOtherContact(@Valid SharedUserList sharedUserList, BindingResult bindingResult, Principal principal, HttpSession session) {
+		session.removeAttribute("shareToUsernameMessage");
 		
 		if (bindingResult.hasErrors()) {
-            return "userListing";
+			session.setAttribute("shareToUsernameMessage", "Username can not be empty");
+            return "redirect:/user/userList";
         }
+		
+		String username = principal.getName();
+		
+		if(username.equalsIgnoreCase(sharedUserList.getShareToUsername())) {
+			session.setAttribute("shareToUsernameMessage", "Invalid Username");
+			return "redirect:/user/userList";
+		}
 		
 		User user = userService.getUserByUsername(sharedUserList.getShareToUsername());
 		
@@ -102,14 +117,29 @@ public class UserController {
 			boolean isListShared = userService.checkListSharedToUser(sharedUserList.getUserListId(), sharedUserList.getSharedToUserId());
 			
 			if(isListShared) {
-				bindingResult.rejectValue("shareToUsername", "error.sharedUserList", "Your list already shared with " + sharedUserList.getShareToUsername());
-				return "userListing";
+				session.setAttribute("shareToUsernameMessage", "Your list already shared with " + sharedUserList.getShareToUsername());
+				return "redirect:/user/userList";
 			}
 			
 			userService.saveSharedUserList(sharedUserList);
+			//session.setAttribute("shareToUsernameMessage", "Your List shared with " + sharedUserList.getShareToUsername() + " successfully");
+		} else {
+			session.setAttribute("shareToUsernameMessage", "Invalid Username");
 		}
 		
 		return "redirect:/user/userList";
+	}
+	
+	@RequestMapping(value = "/sharedUserList", method = RequestMethod.GET)
+	public String showSharedUserListingPage(Model model, Principal principal, HttpSession session) {
+		
+		User user = getLoggedInUser(principal, session);
+		
+		List<UserList> sharedUserLists = userService.getSharedUserListsByUserId(user.getId());
+		
+		model.addAttribute("sharedUserLists", sharedUserLists);
+
+		return "sharedUserListing";
 	}
 	
 	private User getLoggedInUser(Principal principal, HttpSession session) {
