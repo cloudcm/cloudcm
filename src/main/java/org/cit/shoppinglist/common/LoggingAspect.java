@@ -32,10 +32,10 @@ public class LoggingAspect {
 	// The following example defines a pointcut named 'daoMethod' 
 	// that will match the execution of every method available in the classes under the package
 	// name contains dao
-//	@Before("daoMethod()")
-//	public void monitorDataAccessLayer(){
-//		logger.info("A data access layer method has accessed.");
-//	}
+	@Before("daoMethod()")
+	public void monitorDataAccessLayer(){
+		logger.info("A data access layer method has accessed.");
+	}
 	
 	@Before("presentationMethod()")
 	public void monitorPresentationLayer(){
@@ -46,9 +46,9 @@ public class LoggingAspect {
 	public void serviceMethod(){
 	}
 	
-//	@Pointcut("execution(* *..dao.*.*(..))")
-//	public void daoMethod(){
-//	}
+	@Pointcut("execution(* *..dao.*.*(..))")
+	public void daoMethod(){
+	}
 	
 	@Pointcut("execution(* *..controller.*.*(..))")
 	public void presentationMethod(){

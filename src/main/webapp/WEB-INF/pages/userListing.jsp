@@ -7,14 +7,10 @@
 
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Welcome to Shopping List App</title>
-
- <script type="text/javascript" src="<c:url value="/assets/js/jquery-1.11.1.min.js" />"></script>
- <script type="text/javascript" src="<c:url value="/assets/js/common.js" />"></script>
+<c:import url="includes/header.jsp"></c:import>
 </head>
 <body>
-	<c:import url="includes/header.jsp"></c:import>
+	
 	
 	<div align="center">
 	

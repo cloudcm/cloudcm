@@ -5,36 +5,28 @@
 <html>
 
 <head>
-	<title>Login</title>
+<c:import url="includes/head.jsp"></c:import>
 </head>
 
 <body>
-	<div align="center">
-		<h1 style="text-align: center">Login</h1>
+	<div class="container">
+		<form name='f' action="j_spring_security_check" class="form-signin"
+			method='POST'>
+			<h2 class="form-signin-heading">Please sign in</h2>
+			<label for="inputEmail" class="sr-only">Email address</label> <input
+				type="email" id="inputEmail" class="form-control"
+				placeholder="Email address" required="" autofocus=""> <label
+				for="inputPassword" class="sr-only">Password</label> <input
+				type="password" id="inputPassword" class="form-control"
+				placeholder="Password" required="">
+			<button class="btn btn-lg btn-primary btn-block" type="submit"
+				value="Login">Sign in</button>
 
-		<form name='f' action="j_spring_security_check" method='POST'>
-			<table>
-				<tr>
-					<td colspan="2"><h2>Enter your username/password:</h2></td>
-				</tr>
-
-				<tr>
-					<td>Username:</td>
-					<td><input type='text' name='username' value=''></td>
-				</tr>
-				<tr>
-					<td>Password:</td>
-					<td><input type='password' name='password' /></td>
-				</tr>
-				<tr>
-					<td colspan="2" style="text-align: center"><input name="submit" type="submit" value="Login" /></td>
-				</tr>
-			</table>
+			<h3>
+				Don't have an account? <a href="<c:url value="/signup" />">Sign
+					Up</a>
+			</h3>
 		</form>
-
-		<h3>
-			Don't have an account? <a href="<c:url value="/signup" />">Sign Up</a>
-		</h3>
 	</div>
 
 </body>
