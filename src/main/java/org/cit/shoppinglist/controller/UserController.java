@@ -34,25 +34,6 @@ public class UserController {
 	@Autowired
 	UserService userService;
 
-	@RequestMapping(value = "/signupUser", method = RequestMethod.POST)
-	public String createNewUser(@Valid User user, BindingResult bindingResult) {
-
-		if (bindingResult.hasErrors()) {
-			return Constants.PAGE_SIGNUP;
-		}
-
-		User tempUser = userService.getUserByUsername(user.getUsername());
-
-		if (tempUser != null) {
-			bindingResult.rejectValue("username", "error.user", "An account already exists for this Username.");
-			return Constants.PAGE_SIGNUP;
-		}
-
-		userService.createUser(user);
-
-		return Constants.REDIRECT_TO_LOGIN_PAGE;
-	}
-
 	@RequestMapping(value = "/userList", method = RequestMethod.GET)
 	public String showUserListingPage(ModelMap model, Principal principal, HttpSession session) {
 

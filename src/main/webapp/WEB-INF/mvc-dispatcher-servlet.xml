@@ -13,8 +13,6 @@
 	
 	<mvc:annotation-driven />
 	
-	<!-- <mvc:resources mapping="/resources/**" location="/resources/" /> -->
-	
 	<mvc:resources mapping="/assets/**" location="/assets/" />
 	
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
@@ -26,5 +24,10 @@
 			<value>.jsp</value>
 		</property>
 	</bean>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
+        <property name="basename" value="classpath:messages" />
+        <property name="defaultEncoding" value="UTF-8" />
+    </bean>
 
 </beans>

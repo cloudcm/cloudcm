@@ -10,13 +10,17 @@
 
 <body>
 	<div align="center">
-		<h1 style="text-align: center">Login</h1>
+	
+		<h1>Enter your Username / Password</h1>
 
 		<form name='f' action="j_spring_security_check" method='POST'>
 			<table>
-				<tr>
-					<td colspan="2"><h2>Enter your username/password:</h2></td>
-				</tr>
+				
+				<c:if test="${not empty error}">
+					<tr>
+						<td colspan="2" style="text-align:center"><b style="color:red">${error}</b></td>
+					</tr>
+				</c:if>
 
 				<tr>
 					<td>Username:</td>

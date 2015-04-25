@@ -12,9 +12,9 @@
 <body>
 
 	<div align="center">
-		<h1>Sign Up for Your Shopping List</h1>
+		<h1>Sign Up for your Shopping List</h1>
 		
-		<form:form action="user/signupUser" method="post" commandName="user">
+		<form:form action="signupUser" method="post" commandName="user">
 			<table>
 				<form:hidden path="id" />
 				

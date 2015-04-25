@@ -17,7 +17,7 @@ public class SharedUserList implements Serializable {
 	private int sharedByUserId;
 	private int sharedToUserId;
 	
-	@NotEmpty(message = "Username can not be empty")
+	@NotEmpty
 	private String shareToUsername;
 
 	/**
