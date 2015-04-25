@@ -13,8 +13,6 @@
 
 		<intercept-url pattern="/user/userList" access="hasAnyRole('ROLE_USER')" />
 		<intercept-url pattern="/user/sharedUserList" access="hasAnyRole('ROLE_USER')" />
-		<intercept-url pattern="/admin/products" access="hasRole('ROLE_USER')" />
-		<intercept-url pattern="/admin/newProduct" access="hasRole('ROLE_USER')" />
 		<intercept-url pattern="/other/**" access="isAuthenticated()" />
 
 		<access-denied-handler error-page="/accessDenied" />

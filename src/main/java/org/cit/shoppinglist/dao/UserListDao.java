@@ -6,8 +6,16 @@ import org.cit.shoppinglist.model.UserList;
 import org.cit.shoppinglist.model.UserListItem;
 
 public interface UserListDao {
-     
-    int createUserList(UserList userList);
+    
+	/**
+	 * The createUserList() method is used to create new shopping list for user
+	 * in DB
+	 * 
+	 * @param userList
+	 *            Specifies the UserList instance
+	 * @return Return Id of new user list
+	 */
+	int createUserList(UserList userList);
 
 	UserList getUserListByUserId(int userId);
 

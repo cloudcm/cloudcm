@@ -11,15 +11,19 @@ public class LoggingAspect {
 	
 	private Logger logger = Logger.getLogger(getClass());
 	
-	// The following example will execute before every method available 
-	// in the classes under the package org.cit.shoppinglist.service
-	//@Before("execution(* org.cit.shoppinglist.service.*.*(..))")
-	@Before("execution(* org.cit.shoppinglist.service.ProductService.*(..))")
-	public void traceSave(JoinPoint point){
+	/**
+	 * The following example will execute before every method available in the
+	 * classes under the package org.cit.shoppinglist.service
+	 * 
+	 * @param point
+	 */
+	// @Before("execution(* org.cit.shoppinglist.service.*.*(..))")
+	@Before("execution(* org.cit.shoppinglist.service.UserService.*(..))")
+	public void traceSave(JoinPoint point) {
 		String name = point.getSignature().getName();
-		logger.info("method "+name +" called of class "  + point.getTarget());
+		logger.info("method " + name + " called of class " + point.getTarget());
 	}
-	
+
 	@Before("serviceMethod()")
 	public void monitorBusinessLogicLayer(){
 		logger.info("A business method has been accessed.");
