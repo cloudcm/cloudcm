@@ -9,6 +9,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Welcome to Shopping List App</title>
+
+ <script type="text/javascript" src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
+ <script type="text/javascript" src="<c:url value="/resources/js/common.js" />"></script>
 </head>
 <body>
 	<c:import url="includes/header.jsp"></c:import>
@@ -17,49 +20,15 @@
 	
 		<h3>Want to See Lists Shared with You? <a href="<c:url value="/user/sharedUserList" />">Click Here</a></h3>
 		
-		<div style="border: 1px solid #000; width:60%; padding: 1em;">
-			<h2 style="margin-top: 0;">Share your list with others</h2>
-			<form:form action="shareUserList" method="post" commandName="sharedUserList">
-				<table>
-					<form:hidden path="id" />
-					<tr>
-						<td>Type Username to share your list:</td>
-						<td><form:input path="shareToUsername" /></td>
-						<td><input type="submit" value="Share"></td>
-					</tr>
-				</table>
-				
-				<form:hidden path="userListId"/>
-				<form:hidden path="sharedByUserId"/>
-				
-				<b style="color:red"><c:out value="${shareToUsernameMessage}"/></b>
-			</form:form>
-		</div>
+		<c:import url="includes/listSharingForm.jsp"></c:import>
 		
 		<br/><br/>
 		
-		<div style="border: 1px solid #000; width:60%; padding: 1em;">
-			<form:form action="addUserListItem" method="post" commandName="newUserListItem">
-				
-				<table>
-					<form:hidden path="id" />
-					<tr>
-						<td>Insert Item in List:</td>
-						<td><form:input path="item" /></td>
-						<td><input type="submit" value="Add Item"></td>
-					</tr>
-				</table>
-				
-				<form:hidden path="userListId"/>
-				
-				<b style="color:red"><c:out value="${userListItemMessage}"/></b>
-				
-			</form:form>
-		</div>
-		
-		
+		<c:import url="includes/addItemForm.jsp"></c:import>
 		
 		<h1>Your Shopping List</h1>
+		
+		<input id="markUserListItemUrl" type="hidden" value="${pageContext.request.contextPath}/user/markUserListItem" /> 
 		
 		<table border="1" cellpadding="5" cellspacing="3" style="width: 50%;">
 			<tr>
@@ -72,7 +41,7 @@
 			<c:forEach var="userListItem" items="${userListItems}" varStatus="status">
 				<tr>
 					<td>${status.index + 1}</td>
-					<td>${userListItem.purchased}</td>
+					<td style=" text-align: center;"><input type="checkbox" ${userListItem.purchased ? 'checked' : ''} value="${userListItem.id}" onclick="markUnmarkItem(this)"></td>
 					<td>${userListItem.item}</td>
 					<td style=" text-align: center;">
 						<!--  <a href="editProduct?id=${product.id}">Edit</a> &nbsp;&nbsp; -->
@@ -83,5 +52,6 @@
 			</c:forEach>
 		</table>
 	</div>
+	
 </body>
 </html>

@@ -12,16 +12,23 @@ import org.cit.shoppinglist.model.User;
 import org.cit.shoppinglist.model.UserList;
 import org.cit.shoppinglist.model.UserListItem;
 import org.cit.shoppinglist.service.UserService;
+import org.cit.shoppinglist.service.UserServiceImpl;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 @RequestMapping(value = "/user")
 public class UserController {
+	
+	private final static Logger log = LoggerFactory.getLogger(UserServiceImpl.class);
 	
 	@Autowired
 	UserService userService;
@@ -153,5 +160,17 @@ public class UserController {
 		}
 		
 		return user;
+	}
+	
+	@RequestMapping(value = "/markUserListItem", method = RequestMethod.POST)
+	public @ResponseBody Boolean markUserListItem(@RequestParam(value = "userListItemId", required = true) Integer userListItemId,
+			@RequestParam(value = "marked", required = true) Boolean marked, Model model) {
+		
+		log.info("userListItemId: " + userListItemId);
+		log.info("marked: " + marked);
+		
+		userService.markUnmarkUserListItem(userListItemId, marked);
+
+		return marked;
 	}
 }

@@ -32,4 +32,6 @@ public interface UserService {
 	 * 		list of shared userLists
 	 */
 	List<UserList> getSharedUserListsByUserId(int userId);
+
+	void markUnmarkUserListItem(int userListItemId, boolean purchased);
 }

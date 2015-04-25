@@ -10,7 +10,6 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import org.cit.shoppinglist.dao.UserListDao;
-import org.cit.shoppinglist.model.SharedUserList;
 import org.cit.shoppinglist.model.UserList;
 import org.cit.shoppinglist.model.UserListItem;
 import org.springframework.dao.DataAccessException;
@@ -112,56 +111,8 @@ public class UserListDaoImpl implements UserListDao {
 	public void saveUserListItem(UserListItem userListItem) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
 
-		if (userListItem.getId() > 0) {
-			String sql = "UPDATE UserListItem SET UserListId=?, Item=?, Purshased=? WHERE Id = ?";
-			jdbcTemplate.update(sql, userListItem.getUserListId(), userListItem.getItem(), userListItem.isPurchased(), userListItem.getId());
-		} else {
-			// insert UserListItem
-			String sql = "INSERT INTO UserListItem (UserListId, Item, Purchased) VALUES (?, ?, ?)";
-			jdbcTemplate.update(sql, userListItem.getUserListId(), userListItem.getItem(), userListItem.isPurchased());
-		}
-	}
-
-	@Override
-	public void saveSharedUserList(SharedUserList sharedUserList) {
-		jdbcTemplate = new JdbcTemplate(dataSource);
-
 		// insert UserListItem
-		String sql = "INSERT INTO SharedUserList (UserListId, sharedByUserId, sharedToUserId) VALUES (?, ?, ?)";
-		jdbcTemplate.update(sql, sharedUserList.getUserListId(), sharedUserList.getSharedByUserId(), sharedUserList.getSharedToUserId());
-
+		String sql = "INSERT INTO UserListItem (UserListId, Item, Purchased) VALUES (?, ?, ?)";
+		jdbcTemplate.update(sql, userListItem.getUserListId(), userListItem.getItem(), userListItem.isPurchased());
 	}
-
-	@Override
-	public List<UserList> getSharedUserListsByUserId(int userId) {
-		jdbcTemplate = new JdbcTemplate(dataSource);
-		String sql = "SELECT ul.* FROM UserList ul,SharedUserList sul WHERE sul.UserListId = ul.Id and sul.SharedToUserId = " + userId;
-
-		List<UserList> userList = jdbcTemplate.query(sql, new RowMapper<UserList>() {
-
-			public UserList mapRow(ResultSet rs, int rowNum) throws SQLException {
-				UserList userList = new UserList();
-				userList.setId(rs.getInt("Id"));
-				userList.setUserId(rs.getInt("UserId"));
-				userList.setName(rs.getString("Name"));
-				
-				return userList;
-			}
-		});
-		
-		return userList;
-	}
-
-	@Override
-	public boolean checkListSharedToUser(int userListId, int userId) {
-		jdbcTemplate = new JdbcTemplate(dataSource);
-		// String sql = "SELECT * FROM SharedUserList WHERE SharedToUserId =" +
-		// userId + " AND UserListId = " + userListId;
-		String sql = "SELECT EXISTS(SELECT * FROM  SharedUserList WHERE SharedToUserId = " + userId + " AND UserListId = " + userListId + ")";
-
-		Boolean isListShared = jdbcTemplate.queryForObject(sql, Boolean.class);
-
-		return isListShared;
-	}
-
 }

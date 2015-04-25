@@ -2,6 +2,7 @@ package org.cit.shoppinglist.service;
 
 import java.util.List;
 
+import org.cit.shoppinglist.dao.SharedUserListDao;
 import org.cit.shoppinglist.dao.UserDao;
 import org.cit.shoppinglist.dao.UserListDao;
 import org.cit.shoppinglist.model.SharedUserList;
@@ -24,6 +25,9 @@ public class UserServiceImpl implements UserService {
 	
 	@Autowired
 	private UserListDao userListDao;
+	
+	@Autowired
+	private SharedUserListDao sharedUserListDao;
 
 	@Transactional
 	@Override
@@ -95,7 +99,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			log.info("Saving SharedUserList");
 			
-			return userListDao.checkListSharedToUser(userListId, userId);
+			return sharedUserListDao.checkListSharedToUser(userListId, userId);
 			
 		} catch (Exception ex) {
 			log.error("Error in Saving SharedUserList");
@@ -110,7 +114,7 @@ public class UserServiceImpl implements UserService {
 		try {
 			log.info("Saving SharedUserList");
 			
-			userListDao.saveSharedUserList(sharedUserList);
+			sharedUserListDao.saveSharedUserList(sharedUserList);
 			
 		} catch (Exception ex) {
 			log.error("Error in Saving SharedUserList");
@@ -118,19 +122,9 @@ public class UserServiceImpl implements UserService {
 		}
 	}
 
-	private UserList getUserListFromUser(User user) {
-		String userListName = user.getFirstName() + " " + user.getLastName() + " List";
-		
-		UserList userList = new UserList();
-		userList.setName(userListName);
-		userList.setUserId(user.getId());
-		
-		return userList;
-	}
-
 	@Override
 	public List<UserList> getSharedUserListsByUserId(int userId) {
-		List<UserList> userLists = userListDao.getSharedUserListsByUserId(userId);
+		List<UserList> userLists = sharedUserListDao.getSharedUserListsByUserId(userId);
 		
 		// fetch and set userListItems to each userList
 		for(UserList userList : userLists){
@@ -139,5 +133,28 @@ public class UserServiceImpl implements UserService {
 		}
 		
 		return userLists;
+	}
+	
+	@Override
+	public void markUnmarkUserListItem(int userListItemId, boolean purchased) {
+		try {
+			log.info("Mark/Unmark: " + purchased + " UserListItem: " + userListItemId);
+			
+			sharedUserListDao.markUnmarkUserListItem(userListItemId, purchased);
+			
+		} catch (Exception ex) {
+			log.error("Error in mark/unmark UserListItem");
+			ex.printStackTrace();
+		}
+	}
+	
+	private UserList getUserListFromUser(User user) {
+		String userListName = user.getFirstName() + " " + user.getLastName() + " List";
+		
+		UserList userList = new UserList();
+		userList.setName(userListName);
+		userList.setUserId(user.getId());
+		
+		return userList;
 	}
 }

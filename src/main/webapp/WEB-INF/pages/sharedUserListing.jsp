@@ -9,7 +9,12 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lists Shared to You</title>
+
+<script type="text/javascript" src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/common.js" />"></script>
+ 
 </head>
+
 <body>
 	<c:import url="includes/header.jsp"></c:import>
 	
@@ -18,6 +23,8 @@
 		<h1>Lists Shared with You</h1>
 		
 		<h4><a href="<c:url value="/user/userList" />">Go Back</a></h4>
+		
+		<input id="markUserListItemUrl" type="hidden" value="${pageContext.request.contextPath}/user/markUserListItem" /> 
 		
 		<c:forEach var="userList" items="${sharedUserLists}" varStatus="externalStatus">
 			<h3>${externalStatus.index + 1}. ${userList.name} </h3>
@@ -33,7 +40,7 @@
 				<c:forEach var="userListItem" items="${userList.userListItems}" varStatus="status">
 					<tr>
 						<td>${status.index + 1}</td>
-						<td>${userListItem.purchased}</td>
+						<td style=" text-align: center;"><input type="checkbox" ${userListItem.purchased ? 'checked' : ''} value="${userListItem.id}" onclick="markUnmarkItem(this)"></td>
 						<td>${userListItem.item}</td>
 						
 						<%-- <td>
