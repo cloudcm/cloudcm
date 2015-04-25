@@ -2,10 +2,12 @@ package org.cit.shoppinglist.controller;
 
 import java.security.Principal;
 
+import javax.servlet.http.HttpSession;
+
 import org.cit.shoppinglist.common.Constants;
 import org.cit.shoppinglist.model.User;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -13,19 +15,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
-	public String loginPage(Model model) {
+	public String loginPage(ModelMap model, HttpSession session) {
+		
+		if(session.getAttribute("SPRING_SECURITY_CONTEXT") != null) {
+			return Constants.REDIRECT_TO_USER_LISTING_PAGE;
+		}
 		
 		return Constants.PAGE_LOGIN;
 	}
 
 	@RequestMapping(value = "/logout", method = RequestMethod.GET)
-	public String logoutSuccessfulPage(Model model) {
+	public String logoutSuccessfulPage(ModelMap model) {
 		
 		return Constants.PAGE_LOGIN;
 	}
 
 	@RequestMapping(value = "/accessDenied", method = RequestMethod.GET)
-	public String accessDenied(Model model, Principal principal) {
+	public String accessDenied(ModelMap model, Principal principal) {
 
 		if (principal != null) {
 			model.addAttribute("message", "Hi " + principal.getName() + "<br> You do not have permission to access this page!");
@@ -37,7 +43,7 @@ public class LoginController {
 	}
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
-	public String signupPage(Model model) {
+	public String signupPage(ModelMap model) {
 		User user = new User();
 		model.addAttribute("user", user);
 		

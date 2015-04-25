@@ -3,7 +3,7 @@
 
 <div style="border: 1px solid #000; width: 60%; padding: 1em;">
 
-	<form:form action="addUserListItem" method="post" commandName="newUserListItem">
+	<form:form action="addUserListItem" method="post" commandName="userListItem">
 
 		<table>
 			<form:hidden path="id" />

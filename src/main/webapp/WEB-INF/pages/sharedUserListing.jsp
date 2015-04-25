@@ -10,8 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lists Shared to You</title>
 
-<script type="text/javascript" src="<c:url value="/resources/js/jquery-1.11.1.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/resources/js/common.js" />"></script>
+<script type="text/javascript" src="<c:url value="/assets/js/jquery-1.11.1.min.js" />"></script>
+<script type="text/javascript" src="<c:url value="/assets/js/common.js" />"></script>
  
 </head>
 
