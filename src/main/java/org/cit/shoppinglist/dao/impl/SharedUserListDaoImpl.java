@@ -12,6 +12,12 @@ import org.cit.shoppinglist.model.UserList;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 
+/**
+ * The SharedUserListDaoImpl class is the implementation of SharedUserListDao
+ * and this class is used to handle User's Shared Shopping List related database
+ * operations
+ *
+ */
 public class SharedUserListDaoImpl implements SharedUserListDao {
 
 	private DataSource dataSource;
@@ -44,11 +50,11 @@ public class SharedUserListDaoImpl implements SharedUserListDao {
 				userList.setId(rs.getInt("Id"));
 				userList.setUserId(rs.getInt("UserId"));
 				userList.setName(rs.getString("Name"));
-				
+
 				return userList;
 			}
 		});
-		
+
 		return userList;
 	}
 
@@ -62,15 +68,6 @@ public class SharedUserListDaoImpl implements SharedUserListDao {
 		Boolean isListShared = jdbcTemplate.queryForObject(sql, Boolean.class);
 
 		return isListShared;
-	}
-	
-	@Override
-	public void markUnmarkUserListItem(int userListItemId, boolean purchased) {
-		jdbcTemplate = new JdbcTemplate(dataSource);
-
-		String sql = "UPDATE UserListItem SET Purchased=? WHERE Id = ?";
-		jdbcTemplate.update(sql, purchased, userListItemId);
-		
 	}
 
 }

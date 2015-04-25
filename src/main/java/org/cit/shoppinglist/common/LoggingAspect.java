@@ -1,4 +1,4 @@
-package org.cit.shoppinglist.aspects;
+package org.cit.shoppinglist.common;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;

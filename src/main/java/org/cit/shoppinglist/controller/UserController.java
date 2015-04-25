@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.cit.shoppinglist.common.Constants;
 import org.cit.shoppinglist.model.SharedUserList;
 import org.cit.shoppinglist.model.User;
 import org.cit.shoppinglist.model.UserList;
@@ -37,19 +38,19 @@ public class UserController {
 	public String createNewUser(@Valid User user, BindingResult bindingResult) {
 		
 		if (bindingResult.hasErrors()) {
-            return "signupForm";
+            return Constants.PAGE_SIGNUP;
         }
 		
 		User tempUser = userService.getUserByUsername(user.getUsername());
 		
 		if(tempUser != null) {
 			bindingResult.rejectValue("username", "error.user", "An account already exists for this Username.");
-			return "signupForm";
+			return Constants.PAGE_SIGNUP;
 		}
  		
 		userService.createUser(user);
 		
-		return "redirect:/login";
+		return Constants.REDIRECT_TO_LOGIN_PAGE;
 	}
 
 	@RequestMapping(value = "/userList", method = RequestMethod.GET)
@@ -73,7 +74,7 @@ public class UserController {
 		
 		model.addAttribute("sharedUserList", sharedUserList);
 
-		return "userListing";
+		return Constants.PAGE_USER_LISTING;
 	}
 
 	@RequestMapping(value = "/addUserListItem", method = RequestMethod.POST)
@@ -83,12 +84,12 @@ public class UserController {
 		
 		if (bindingResult.hasErrors()) {
 			session.setAttribute("userListItemMessage", "Item can not be empty");
-			return "redirect:/user/userList";
+			return Constants.REDIRECT_TO_USER_LISTING_PAGE;
         }
 		
 		userService.saveUserListItem(userListItem);
 		
-		return "redirect:/user/userList";
+		return Constants.REDIRECT_TO_USER_LISTING_PAGE;
 	}
 	
 	@RequestMapping(value = "/deleteUserListItem", method = RequestMethod.GET)
@@ -96,7 +97,7 @@ public class UserController {
 		int userListItemId = Integer.parseInt(request.getParameter("id"));
 		userService.deleteUserListItem(userListItemId);
 		
-		return "redirect:/user/userList";
+		return Constants.REDIRECT_TO_USER_LISTING_PAGE;
 	}
 	
 	@RequestMapping(value = "/shareUserList", method = RequestMethod.POST)
@@ -105,14 +106,14 @@ public class UserController {
 		
 		if (bindingResult.hasErrors()) {
 			session.setAttribute("shareToUsernameMessage", "Username can not be empty");
-            return "redirect:/user/userList";
+            return Constants.REDIRECT_TO_USER_LISTING_PAGE;
         }
 		
 		String username = principal.getName();
 		
 		if(username.equalsIgnoreCase(sharedUserList.getShareToUsername())) {
 			session.setAttribute("shareToUsernameMessage", "Invalid Username");
-			return "redirect:/user/userList";
+			return Constants.REDIRECT_TO_USER_LISTING_PAGE;
 		}
 		
 		User user = userService.getUserByUsername(sharedUserList.getShareToUsername());
@@ -125,7 +126,7 @@ public class UserController {
 			
 			if(isListShared) {
 				session.setAttribute("shareToUsernameMessage", "Your list already shared with " + sharedUserList.getShareToUsername());
-				return "redirect:/user/userList";
+				return Constants.REDIRECT_TO_USER_LISTING_PAGE;
 			}
 			
 			userService.saveSharedUserList(sharedUserList);
@@ -134,7 +135,7 @@ public class UserController {
 			session.setAttribute("shareToUsernameMessage", "Invalid Username");
 		}
 		
-		return "redirect:/user/userList";
+		return Constants.REDIRECT_TO_USER_LISTING_PAGE;
 	}
 	
 	@RequestMapping(value = "/sharedUserList", method = RequestMethod.GET)
@@ -146,7 +147,7 @@ public class UserController {
 		
 		model.addAttribute("sharedUserLists", sharedUserLists);
 
-		return "sharedUserListing";
+		return Constants.PAGE_SHARED_USER_LISTING;
 	}
 	
 	private User getLoggedInUser(Principal principal, HttpSession session) {

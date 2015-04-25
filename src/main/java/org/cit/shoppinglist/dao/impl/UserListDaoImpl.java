@@ -20,6 +20,11 @@ import org.springframework.jdbc.core.RowMapper;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+/**
+ * The UserListDaoImpl class is the implementation of UserListDao and this class
+ * is used to handle User's Shopping List related database operations
+ *
+ */
 public class UserListDaoImpl implements UserListDao {
 
 	private DataSource dataSource;
@@ -114,5 +119,14 @@ public class UserListDaoImpl implements UserListDao {
 		// insert UserListItem
 		String sql = "INSERT INTO UserListItem (UserListId, Item, Purchased) VALUES (?, ?, ?)";
 		jdbcTemplate.update(sql, userListItem.getUserListId(), userListItem.getItem(), userListItem.isPurchased());
+	}
+	
+	@Override
+	public void markUnmarkUserListItem(int userListItemId, boolean purchased) {
+		jdbcTemplate = new JdbcTemplate(dataSource);
+
+		String sql = "UPDATE UserListItem SET Purchased=? WHERE Id = ?";
+		jdbcTemplate.update(sql, purchased, userListItemId);
+		
 	}
 }

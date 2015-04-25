@@ -17,6 +17,11 @@ import org.springframework.jdbc.core.ResultSetExtractor;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+/**
+ * The UserDaoImpl class is the implementation of UserDao and this class is used
+ * to handle User related database operations
+ *
+ */
 public class UserDaoImpl implements UserDao {
 
 	private DataSource dataSource;
@@ -30,7 +35,7 @@ public class UserDaoImpl implements UserDao {
 	@Override
 	public int createUser(final User user) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
-		
+
 		// insert User
 		final String sql = "INSERT INTO User (FirstName, LastName, Username, Password, Enabled) VALUES (?, ?, ?, ?, ?)";
 
@@ -58,7 +63,7 @@ public class UserDaoImpl implements UserDao {
 
 		return userId;
 	}
-	
+
 	@Override
 	public User getUserbyUsername(String username) {
 		jdbcTemplate = new JdbcTemplate(dataSource);
@@ -78,7 +83,7 @@ public class UserDaoImpl implements UserDao {
 
 					return user;
 				}
-				
+
 				return null;
 			}
 		});
