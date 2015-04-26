@@ -16,7 +16,9 @@
 </script>
 </head>
 <body>
-	<c:import url="includes/header.jsp"></c:import>
+	<c:import url="includes/header.jsp">
+		<c:param name="activeClass" value="myList"/>
+	</c:import>
 
 	<div class="container" style="margin-top: 7em;">
 		<div class="row">

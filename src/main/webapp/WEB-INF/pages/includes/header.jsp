@@ -13,22 +13,23 @@
 				</button>
 			</c:if>
 			
-			<a class="navbar-brand" href="#">Shopping List</a>
+			<a class="navbar-brand text-bold text-white" href="#">Shopping List</a>
 		</div>
 		
 		<div id="navbar" class="collapse navbar-collapse">
 			<c:if test="${pageContext.request.userPrincipal.name != null}">
 				<ul class="nav navbar-nav">
-					<li><a href="<c:url value="/user/userList" />">My List</a></li>
-					<li><a href="<c:url value="/user/sharedUserList" />">Shared List</a></li>
+					<li class=" <c:out value="${param.activeClass eq 'myList'? 'active' : ''}"/>"><a href="<c:url value="/user/userList" />">My List</a></li>
+					<li class=" <c:out value="${param.activeClass eq 'sharedList'? 'active' : ''}"/>"><a href="<c:url value="/user/sharedUserList" />">Shared List</a></li>
 				</ul>
 			</c:if>
 			
 			<div class="pull-right">
 				<c:if test="${pageContext.request.userPrincipal.name != null}">
-					<h3 style="color: #fff; margin-top: 0.75em;">
-						<small>Welcome <b><c:out value="${loggedInUser.firstName}" /> <c:out value="${loggedInUser.lastName}" /></b> | <a href="<c:url value="/logout" />">Logout</a></small>
-					</h3>
+					<h4 style="margin-top: 1.1em;">
+						<small class="text-white">Welcome <b style="margin: 0 0.5em 0 0.25em;">
+							<c:out value="${loggedInUser.firstName}" /> <c:out value="${loggedInUser.lastName}" /></b> | <a style="margin-left:0.5em;" class="text-bold" href="<c:url value="/logout" />">Logout</a></small>
+					</h4>
 				</c:if>
 			</div>
 		</div>

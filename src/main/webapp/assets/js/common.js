@@ -14,6 +14,10 @@ function markUnmarkItem(checkbox) {
 
 function showDataTable() {
 	$('table.listDataTable').dataTable({
+		"oLanguage": {
+			"sEmptyTable": "No item in shopping list"
+	    },
+		
 		"fnDrawCallback" : function(oSettings) {
 			//if row contains less than 11 items disable pagination bar
 			if ($('#dataTables-example tr').length < 11) {

@@ -20,15 +20,25 @@
 </head>
 
 <body>
-	<c:import url="includes/header.jsp"></c:import>
+	<c:import url="includes/header.jsp">
+		<c:param name="activeClass" value="sharedList"/>
+	</c:import>
 
 	<div class="container" style="margin-top: 7em;">
 
-		<h1>Lists Shared with You</h1>
+		<h1 class="text-center">Lists Shared with You</h1>
 
-		<h4>
+		<h4 class="text-center">
 			<a href="<c:url value="/user/userList" />">Go Back</a>
 		</h4>
+
+		<c:if test="${empty sharedUserLists}">
+			<div class="row">
+				<div class="col-xs-12 ">
+					<div class="alert alert-info">No one shared his list with you. <a class="alert-link" href="<c:url value="/user/userList" />">Go Back</a></div>
+				</div>
+			</div>
+		</c:if>
 
 		<input id="markUserListItemUrl" type="hidden" value="${pageContext.request.contextPath}/user/markUserListItem" />
 

@@ -20,6 +20,10 @@ body {
 	font-weight: bold;
 }
 
+.text-white {
+	color: #fff !important;
+}
+
 .table-responsive {
 	overflow:hidden;
 }
