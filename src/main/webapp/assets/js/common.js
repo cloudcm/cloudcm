@@ -11,3 +11,14 @@ function markUnmarkItem(checkbox) {
 		});
 	});
 }
+
+function showDataTable() {
+	$('#dataTables-example').dataTable({
+		"fnDrawCallback" : function(oSettings) {
+			//if row contains less than 11 items disable pagination bar
+			if ($('#dataTables-example tr').length < 11) {
+				$('.dataTables_paginate').hide();
+			}
+		}
+	});
+}

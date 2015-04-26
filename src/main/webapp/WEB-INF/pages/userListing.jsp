@@ -10,15 +10,10 @@
 <c:import url="includes/head.jsp"></c:import>
 
 <script>
-    $(document).ready(function() {
-        $('#dataTables-example').dataTable({
-            "fnDrawCallback": function(oSettings) {
-                if ($('#dataTables-example tr').length < 11) {
-                    $('.dataTables_paginate').hide();
-                }
-            }
-    })});
-    </script>
+	$(document).ready(function() {
+		showDataTable();
+	});
+</script>
 </head>
 <body>
 	<c:import url="includes/navigationbar.jsp"></c:import>
