@@ -11,8 +11,13 @@
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
     $(document).ready(function() {
-        $('#dataTables-example').dataTable();
-    });
+        $('#dataTables-example').dataTable({
+            "fnDrawCallback": function(oSettings) {
+                if ($('#dataTables-example tr').length < 11) {
+                    $('.dataTables_paginate').hide();
+                }
+            }
+    })});
     </script>
 </head>
 <body>
@@ -31,15 +36,13 @@
 
 		<c:import url="includes/addItemForm.jsp"></c:import>
 
-		<h1>Your Shopping List</h1>
-
 		<input id="markUserListItemUrl" type="hidden"
 			value="${pageContext.request.contextPath}/user/markUserListItem" />
 
 		<div class="row">
 			<div class="col-lg-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">DataTables Advanced Tables</div>
+					<div class="panel-heading">Your Shopping List</div>
 					<!-- /.panel-heading -->
 					<div class="panel-body">
 						<div class="table-responsive">
