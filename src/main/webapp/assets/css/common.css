@@ -46,3 +46,11 @@ body {
 	border-top-left-radius: 0;
 	border-top-right-radius: 0;
 }
+
+.padding-left-zero {
+	padding-left: 0em;
+}
+
+.text-align-right {
+	text-align: right;
+}
