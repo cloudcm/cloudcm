@@ -6,10 +6,10 @@
      http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
 
 	<http use-expressions="true">
-		<intercept-url pattern="/" access="isAnonymous()" />
-		<intercept-url pattern="/login" access="isAnonymous()" />
-		<intercept-url pattern="/signup" access="isAnonymous()" />
-		<intercept-url pattern="/logout" access="isAnonymous()" />
+		<intercept-url pattern="/" access="permitAll" />
+		<intercept-url pattern="/login" access="permitAll" />
+		<intercept-url pattern="/signup" access="permitAll" />
+		<intercept-url pattern="/logout" access="permitAll" />
 
 		<intercept-url pattern="/user/userList" access="hasAnyRole('ROLE_USER')" />
 		<intercept-url pattern="/user/sharedUserList" access="hasAnyRole('ROLE_USER')" />

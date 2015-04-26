@@ -8,6 +8,9 @@ import org.cit.shoppinglist.common.Constants;
 import org.cit.shoppinglist.model.User;
 import org.cit.shoppinglist.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -23,6 +26,12 @@ public class LoginController {
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
 	public String loginPage(@RequestParam(value = "error", required = false) String error, ModelMap model) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			return Constants.REDIRECT_TO_USER_LISTING_PAGE;
+		}
 		
 		if (error != null) {
 			model.addAttribute("error", "Invalid username and password!");
@@ -51,6 +60,13 @@ public class LoginController {
 	
 	@RequestMapping(value = "/signup", method = RequestMethod.GET)
 	public String signupPage(ModelMap model) {
+		
+		Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+
+		if (!(auth instanceof AnonymousAuthenticationToken)) {
+			return Constants.REDIRECT_TO_USER_LISTING_PAGE;
+		}
+		
 		User user = new User();
 		model.addAttribute("user", user);
 		
