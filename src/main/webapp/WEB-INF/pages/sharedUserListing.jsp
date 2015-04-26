@@ -14,8 +14,8 @@
 </head>
 
 <body>
-	<c:import url="includes/navigationbar.jsp"></c:import>
-	
+	<c:import url="includes/header.jsp"></c:import>
+
 	<div align="center" style="margin-top: 7em;">
 		
 		<h1>Lists Shared with You</h1>

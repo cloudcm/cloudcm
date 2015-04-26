@@ -9,6 +9,8 @@
 </head>
 
 <body>
+	<c:import url="includes/header.jsp"></c:import>
+	
 	<div class="container">
 
 		<div class="row">
