@@ -8,14 +8,14 @@
 
 <title>Starter Template for Bootstrap</title>
 <!-- Bootstrap core CSS -->
-<link href="/assets/bootstrap/css/bootstrap.min.css"
-	rel="stylesheet">
+<link href="assets/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 <!-- Custom styles for this template -->
-<link href="/assets/css/common.css" rel="stylesheet">
+<link href="assets/css/common.css" rel="stylesheet">
 
 <!-- Bootstrap core JavaScript
     ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
-<script type="text/javascript" src="/assets/js/jquery-1.11.1.min.js"></script>
-<script type="text/javascript" src="/assets/bootstrap/js/bootstrap.min.js"></script>
-<script type="text/javascript" src="/assets/js/common.js"></script>
+<script type="text/javascript" src="assets/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript"
+	src="assets/bootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="assets/js/common.js"></script>

@@ -12,7 +12,7 @@ public class UserListItem implements Serializable {
 	private int userListId;
 	private boolean purchased;
 	
-	@NotEmpty(message="Item can not be empty")
+	@NotEmpty
 	private String item;
 
 	/**

@@ -2,23 +2,30 @@ package org.cit.shoppinglist.controller;
 
 import java.security.Principal;
 
-import javax.servlet.http.HttpSession;
+import javax.validation.Valid;
 
 import org.cit.shoppinglist.common.Constants;
 import org.cit.shoppinglist.model.User;
+import org.cit.shoppinglist.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class LoginController {
+	
+	@Autowired
+	UserService userService;
 
 	@RequestMapping(value = { "/", "/login" }, method = RequestMethod.GET)
-	public String loginPage(ModelMap model, HttpSession session) {
+	public String loginPage(@RequestParam(value = "error", required = false) String error, ModelMap model) {
 		
-		if(session.getAttribute("SPRING_SECURITY_CONTEXT") != null) {
-			return Constants.REDIRECT_TO_USER_LISTING_PAGE;
+		if (error != null) {
+			model.addAttribute("error", "Invalid username and password!");
 		}
 		
 		return Constants.PAGE_LOGIN;
@@ -48,5 +55,24 @@ public class LoginController {
 		model.addAttribute("user", user);
 		
 		return Constants.PAGE_SIGNUP;
+	}
+	
+	@RequestMapping(value = "/signupUser", method = RequestMethod.POST)
+	public String createNewUser(@Valid User user, BindingResult bindingResult) {
+
+		if (bindingResult.hasErrors()) {
+			return Constants.PAGE_SIGNUP;
+		}
+
+		User tempUser = userService.getUserByUsername(user.getUsername());
+
+		if (tempUser != null) {
+			bindingResult.rejectValue("username", "error.user", "An account already exists for this Username.");
+			return Constants.PAGE_SIGNUP;
+		}
+
+		userService.createUser(user);
+
+		return Constants.REDIRECT_TO_LOGIN_PAGE;
 	}
 }

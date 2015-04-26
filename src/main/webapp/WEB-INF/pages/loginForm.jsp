@@ -14,7 +14,7 @@
 			method='POST'>
 			<h2 class="form-signin-heading">Please sign in</h2>
 			<label for="inputEmail" class="sr-only">Email address</label> <input
-				type="email" id="inputEmail" class="form-control"
+				type="text" id="inputEmail" class="form-control"
 				placeholder="Email address" required="" autofocus=""> <label
 				for="inputPassword" class="sr-only">Password</label> <input
 				type="password" id="inputPassword" class="form-control"
@@ -22,13 +22,11 @@
 			<button class="btn btn-lg btn-primary btn-block" type="submit"
 				value="Login">Sign in</button>
 
-			<h3>
+			<h4>
 				Don't have an account? <a href="<c:url value="/signup" />">Sign
 					Up</a>
-			</h3>
+			</h4>
 		</form>
 	</div>
-
 </body>
-
 </html>

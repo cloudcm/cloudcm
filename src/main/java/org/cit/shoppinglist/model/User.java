@@ -18,16 +18,16 @@ public class User implements Serializable {
 
 	private int id;
 	
-	@NotEmpty(message="First Name can not be empty")
+	@NotEmpty
 	private String firstName;
 	
-	@NotEmpty(message="Last Name can not be empty")
+	@NotEmpty
 	private String lastName;
 	
-	@NotEmpty(message="Username can not be empty")
+	@NotEmpty
 	private String username;
 	
-	@NotEmpty(message="Password can not be empty")
+	@NotEmpty
 	private String password;
 	
 	private boolean enabled;
