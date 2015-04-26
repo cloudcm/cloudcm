@@ -1,3 +1,5 @@
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+
 <nav class="navbar navbar-inverse navbar-fixed-top">
 	<div class="container">
 		<div class="navbar-header">
@@ -10,10 +12,11 @@
 			</button>
 			<a class="navbar-brand" href="#">Shopping List</a>
 		</div>
+		
 		<div id="navbar" class="collapse navbar-collapse">
 			<ul class="nav navbar-nav">
-				<li><a href="#">My List</a></li>
-				<li><a href="#">Shared List</a></li>
+				<li><a href="<c:url value="/user/userList" />">My List</a></li>
+				<li><a href="<c:url value="/user/sharedUserList" />">Shared List</a></li>
 			</ul>
 		</div>
 		<!--/.nav-collapse -->

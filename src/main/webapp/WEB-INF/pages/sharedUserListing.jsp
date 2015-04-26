@@ -9,16 +9,14 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lists Shared to You</title>
-
-<script type="text/javascript" src="<c:url value="/assets/js/jquery-1.11.1.min.js" />"></script>
-<script type="text/javascript" src="<c:url value="/assets/js/common.js" />"></script>
+<c:import url="includes/head.jsp"></c:import>
  
 </head>
 
 <body>
-	<c:import url="includes/header.jsp"></c:import>
+	<c:import url="includes/navigationbar.jsp"></c:import>
 	
-	<div align="center">
+	<div align="center" style="margin-top: 7em;">
 		
 		<h1>Lists Shared with You</h1>
 		
