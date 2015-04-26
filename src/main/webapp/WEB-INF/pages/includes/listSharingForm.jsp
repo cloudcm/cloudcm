@@ -5,24 +5,31 @@
 	<div class="panel-heading">
 		<h3 class="panel-title text-bold">Share your list with others</h3>
 	</div>
-	
+
 	<div class="panel-body">
 		<form:form action="shareUserList" method="post" commandName="sharedUserList">
 			<form:hidden path="id" />
-			<div class="col-lg-2">
-				<label for="shareToUsername" class="sr-only">Username</label>
+			<div class="col-xs-2">
+				<label for="shareToUsername" class="sr-only">Enter Username</label>
 			</div>
-			<div class="col-lg-6">
-				<form:input cssClass="form-control" placeholder="enter username" path="shareToUsername" autofocus="true" />
-			</div>
-			<div class="col-lg-3">
-				<input class="btn btn-success btn-block" type="submit" value="Share">
+
+			<div class="col-xs-12">
+				<div class="form-group input-group">
+					<form:input cssClass="form-control" placeholder="Enter username" path="shareToUsername" required="true" />
+
+					<span class="input-group-btn">
+						<input class="btn btn-success btn-block" type="submit" value="Share">
+					</span>
+				</div>
+
+				<h5 class="text-danger mr-zero">
+					<c:out value="${shareToUsernameMessage}" />
+				</h5>
 			</div>
 
 			<form:hidden path="userListId" />
 			<form:hidden path="sharedByUserId" />
 
-			<b style="color: red"><c:out value="${shareToUsernameMessage}" /></b>
 		</form:form>
 	</div>
 </div>

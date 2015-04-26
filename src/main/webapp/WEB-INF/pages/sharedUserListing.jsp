@@ -10,45 +10,66 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Lists Shared to You</title>
 <c:import url="includes/head.jsp"></c:import>
- 
+
+<script>
+	$(document).ready(function() {
+		showDataTable();
+	});
+</script>
+
 </head>
 
 <body>
 	<c:import url="includes/header.jsp"></c:import>
 
-	<div align="center" style="margin-top: 7em;">
-		
+	<div class="container" style="margin-top: 7em;">
+
 		<h1>Lists Shared with You</h1>
-		
-		<h4><a href="<c:url value="/user/userList" />">Go Back</a></h4>
-		
-		<input id="markUserListItemUrl" type="hidden" value="${pageContext.request.contextPath}/user/markUserListItem" /> 
-		
+
+		<h4>
+			<a href="<c:url value="/user/userList" />">Go Back</a>
+		</h4>
+
+		<input id="markUserListItemUrl" type="hidden" value="${pageContext.request.contextPath}/user/markUserListItem" />
+
 		<c:forEach var="userList" items="${sharedUserLists}" varStatus="externalStatus">
-			<h3>${externalStatus.index + 1}. ${userList.name} </h3>
-			
-			<table border="1" cellpadding="5" cellspacing="3" style="width: 50%;">
-				<tr>
-					<th>No</th>
-					<th>Purchased</th>
-					<th>Item</th>
-					<!-- <th>Action</th> -->
-				</tr>
-	
-				<c:forEach var="userListItem" items="${userList.userListItems}" varStatus="status">
-					<tr>
-						<td>${status.index + 1}</td>
-						<td style=" text-align: center;"><input type="checkbox" ${userListItem.purchased ? 'checked' : ''} value="${userListItem.id}" onclick="markUnmarkItem(this)"></td>
-						<td>${userListItem.item}</td>
-						
-						<%-- <td>
-							<!--  <a href="editProduct?id=${product.id}">Edit</a> &nbsp;&nbsp; -->
-							<a href="deleteUserListItem?id=${userListItem.id}">Delete</a>
-						</td> --%>
-	
-					</tr>
-				</c:forEach>
-			</table>
+			<div class="row">
+				<div class="col-xs-12">
+					<div class="panel panel-default">
+						<div class="panel-heading">
+							<h3 class="panel-title text-bold">${externalStatus.index + 1}.${userList.name}</h3>
+						</div>
+
+						<!-- /.panel-heading -->
+						<div class="panel-body">
+							<div class="table-responsive">
+								<table class="listDataTable table table-striped table-bordered table-hover">
+									<thead>
+										<tr>
+											<th>No</th>
+											<th>Purchased</th>
+											<th>Item</th>
+										</tr>
+									</thead>
+									<tbody>
+										<c:forEach var="userListItem" items="${userList.userListItems}" varStatus="status">
+											<tr>
+												<td>${status.index + 1}</td>
+												<td class="text-center"><input type="checkbox" ${userListItem.purchased ? 'checked' : ''} value="${userListItem.id}"
+													onclick="markUnmarkItem(this)"></td>
+												<td>${userListItem.item}</td>
+											</tr>
+										</c:forEach>
+									</tbody>
+								</table>
+							</div>
+						</div>
+						<!-- /.panel-body -->
+					</div>
+					<!-- /.panel -->
+				</div>
+				<!-- /.col-lg-12 -->
+			</div>
 		</c:forEach>
 	</div>
 </body>

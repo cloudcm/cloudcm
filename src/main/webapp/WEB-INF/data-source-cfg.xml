@@ -22,9 +22,9 @@
       <property name="username" value="root" />
       <property name="password" value="root" />
       
-      <!-- <property name="url" value="jdbc:mysql://us-cdbr-iron-east-02.cleardb.net:3306/ad_a3f9df1b0149a3c" />
-      <property name="username" value="b0b81235564989" />
-      <property name="password" value="f239df19" /> -->
+      <!-- <property name="url" value="jdbc:mysql://us-cdbr-iron-east-02.cleardb.net:3306/ad_8ca375a52673bb0" />
+      <property name="username" value="b517fab1e45883" />
+      <property name="password" value="95c8f9aa" /> -->
    </bean>
 
 </beans>

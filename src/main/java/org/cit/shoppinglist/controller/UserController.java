@@ -157,7 +157,7 @@ public class UserController {
 			boolean isListShared = userService.checkListSharedToUser(sharedUserList.getUserListId(), sharedUserList.getSharedToUserId());
 
 			if (isListShared) {
-				session.setAttribute("shareToUsernameMessage", "Your list already shared with " + sharedUserList.getShareToUsername());
+				session.setAttribute("shareToUsernameMessage", "Your list already shared with \"" + sharedUserList.getShareToUsername() + "\"");
 				return false;
 			}
 		} else {

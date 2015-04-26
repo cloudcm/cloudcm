@@ -41,7 +41,7 @@
 					<!-- /.panel-heading -->
 					<div class="panel-body">
 						<div class="table-responsive">
-							<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+							<table class="listDataTable table table-striped table-bordered table-hover" >
 								<thead>
 									<tr>
 										<th>No</th>
@@ -57,7 +57,7 @@
 											<td style="text-align: center;"><input type="checkbox" ${userListItem.purchased ? 'checked' : ''} value="${userListItem.id}"
 												onclick="markUnmarkItem(this)"></td>
 											<td>${userListItem.item}</td>
-											<td style="text-align: center;">
+											<td class="text-center">
 												<!--  <a href="editProduct?id=${product.id}">Edit</a> &nbsp;&nbsp; --> <a href="deleteUserListItem?id=${userListItem.id}">Delete</a>
 											</td>
 

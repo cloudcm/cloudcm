@@ -12,8 +12,8 @@ body {
 	margin-top: 8em;
 }
 
-.padding-left-zero {
-	padding-left: 0em;
+.mr-zero {
+	margin: 0em;
 }
 
 .text-bold {
