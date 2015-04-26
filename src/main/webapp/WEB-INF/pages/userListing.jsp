@@ -7,16 +7,14 @@
 
 <html>
 <head>
-<c:import url="includes/head.jsp"></c:import>
-<c:import url="includes/header.jsp"></c:import>
+	<c:import url="includes/head.jsp"></c:import>
 </head>
 <body>
 	
 	<c:import url="includes/navigationbar.jsp"></c:import>
-	<div class="container">
 	
-		<h3>Want to See Lists Shared with You? <a href="<c:url value="/user/sharedUserList" />">Click Here</a></h3>
-		
+	<div class="container" style="margin-top: 7em;">
+	
 		<c:import url="includes/listSharingForm.jsp"></c:import>
 		
 		<br/><br/>
