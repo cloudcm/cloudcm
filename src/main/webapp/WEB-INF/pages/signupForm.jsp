@@ -35,7 +35,7 @@
 								</div>
 								
 								<div class="col-xs-12">
-									<form:errors path="firstName" />
+									<form:errors path="firstName" cssClass="text-danger" />
 								</div>
 							</div>
 
@@ -49,7 +49,7 @@
 								</div>
 								
 								<div class="col-xs-12">
-									<form:errors path="lastName" />
+									<form:errors path="lastName" cssClass="text-danger" />
 								</div>
 							</div>
 							
@@ -63,7 +63,7 @@
 								</div>
 								
 								<div class="col-xs-12">
-									<form:errors path="username" />
+									<form:errors path="username" cssClass="text-danger" />
 								</div>
 							</div>
 							
@@ -77,7 +77,7 @@
 								</div>
 								
 								<div class="col-xs-12">
-									<form:errors path="password" />
+									<form:errors path="password" cssClass="text-danger" />
 								</div>
 							</div>
 
