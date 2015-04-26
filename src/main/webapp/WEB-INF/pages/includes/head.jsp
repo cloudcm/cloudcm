@@ -11,6 +11,7 @@
 <title>Welcome to the Shopping List</title>
 <!-- Bootstrap core CSS -->
 <link href="<c:url value="/assets/bootstrap/css/bootstrap.min.css" />" rel="stylesheet">
+<link href="<c:url value="/assets/bootstrap/css/dataTables.bootstrap.css" />" rel="stylesheet">
 <!-- Custom styles for this template -->
 <link href="<c:url value="/assets/css/common.css" />" rel="stylesheet">
 
@@ -19,4 +20,7 @@
 <!-- Placed at the end of the document so the pages load faster -->
 <script type="text/javascript" src="<c:url value="/assets/js/jquery-1.11.1.min.js" />"></script>
 <script type="text/javascript" src="<c:url value="/assets/bootstrap/js/bootstrap.min.js" />"></script>
+<!-- DataTables JavaScript -->
+<script type="text/javascript" src="<c:url value="/assets/bootstrap/js/jquery.dataTables.js" />"></script>
+<script type="text/javascript" src="<c:url value="/assets/bootstrap/js/dataTables.bootstrap.js" />"></script>  
 <script type="text/javascript" src="<c:url value="/assets/js/common.js" />"></script>
