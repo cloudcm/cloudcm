@@ -6,13 +6,13 @@
 	<div class="panel-body">
 		<form:form action="shareUserList" method="post"
 			commandName="sharedUserList">
-			<table>
-				<form:hidden path="id" />
-				<tr>
-					<td><form:input path="shareToUsername" /></td>
-					<td><input type="submit" value="Share"></td>
-				</tr>
-			</table>
+			<form:hidden path="id" />
+			<div class="col-lg-6">
+				<form:input path="shareToUsername" />
+			</div>
+			<div class="col-lg-3">
+				<input class="btn btn-success btn-block" type="submit" value="Share">
+			</div>
 
 			<form:hidden path="userListId" />
 			<form:hidden path="sharedByUserId" />

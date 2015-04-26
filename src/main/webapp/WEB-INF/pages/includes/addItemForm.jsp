@@ -6,19 +6,16 @@
 	<div class="panel-body">
 		<form:form action="addUserListItem" method="post"
 			commandName="userListItem">
-
-			<table>
-				<form:hidden path="id" />
-				<tr>
-					<td><form:input path="item" /></td>
-					<td><input type="submit" value="Add Item"></td>
-				</tr>
-			</table>
-
+			<form:hidden path="id" />
+			<div class="col-lg-6">
+				<form:input path="item" />
+			</div>
+			<div class="col-lg-3">
+				<input class="btn btn-success btn-block" type="submit"
+					value="Add Item">
+			</div>
 			<form:hidden path="userListId" />
-
 			<b style="color: red"><c:out value="${userListItemMessage}" /></b>
-
 		</form:form>
 	</div>
 </div>
