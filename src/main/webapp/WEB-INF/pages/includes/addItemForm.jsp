@@ -7,8 +7,11 @@
 		<form:form action="addUserListItem" method="post"
 			commandName="userListItem">
 			<form:hidden path="id" />
+			<div class="col-lg-2">
+				<label for="item" class="sr-only">Username</label>
+			</div>
 			<div class="col-lg-6">
-				<form:input path="item" />
+				<form:input cssClass="form-control" placeholder="enter item name" path="item" autofocus="true" />
 			</div>
 			<div class="col-lg-3">
 				<input class="btn btn-success btn-block" type="submit"
