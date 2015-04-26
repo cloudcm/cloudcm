@@ -2,10 +2,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div class="panel panel-default">
-	<div class="panel-heading">Add items to your list</div>
+	<div class="panel-heading text-bold">
+		<h3 class="panel-title text-bold">Add items to your list</h3>
+	</div>
+
 	<div class="panel-body">
-		<form:form action="addUserListItem" method="post"
-			commandName="userListItem">
+		<form:form action="addUserListItem" method="post" commandName="userListItem">
 			<form:hidden path="id" />
 			<div class="col-lg-2">
 				<label for="item" class="sr-only">Username</label>
@@ -14,8 +16,7 @@
 				<form:input cssClass="form-control" placeholder="enter item name" path="item" autofocus="true" />
 			</div>
 			<div class="col-lg-3">
-				<input class="btn btn-success btn-block" type="submit"
-					value="Add Item">
+				<input class="btn btn-success btn-block" type="submit" value="Add Item">
 			</div>
 			<form:hidden path="userListId" />
 			<b style="color: red"><c:out value="${userListItemMessage}" /></b>

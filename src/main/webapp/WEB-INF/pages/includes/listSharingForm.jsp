@@ -2,10 +2,12 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
 <div class="panel panel-default">
-	<div class="panel-heading">Share your list with others</div>
+	<div class="panel-heading">
+		<h3 class="panel-title text-bold">Share your list with others</h3>
+	</div>
+	
 	<div class="panel-body">
-		<form:form action="shareUserList" method="post"
-			commandName="sharedUserList">
+		<form:form action="shareUserList" method="post" commandName="sharedUserList">
 			<form:hidden path="id" />
 			<div class="col-lg-2">
 				<label for="shareToUsername" class="sr-only">Username</label>
