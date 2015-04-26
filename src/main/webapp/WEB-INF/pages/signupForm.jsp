@@ -29,7 +29,7 @@
 								</div>
 
 								<div class="col-xs-12">
-									<form:input path="firstName" cssClass="form-control" placeholder="First Name" required="" autofocus="" />
+									<form:input path="firstName" cssClass="form-control" placeholder="First Name" required="true" autofocus="true" />
 								</div>
 								
 								<div class="col-xs-12">
@@ -43,7 +43,7 @@
 								</div>
 
 								<div class="col-xs-12">
-									<form:input path="lastName" cssClass="form-control" placeholder="Last Name" required="" />
+									<form:input path="lastName" cssClass="form-control" placeholder="Last Name" required="true" />
 								</div>
 								
 								<div class="col-xs-12">
@@ -57,7 +57,7 @@
 								</div>
 
 								<div class="col-xs-12">
-									<form:input path="username" cssClass="form-control" placeholder="Username" required="" />
+									<form:input path="username" cssClass="form-control" placeholder="Username" required="true" />
 								</div>
 								
 								<div class="col-xs-12">
@@ -71,7 +71,7 @@
 								</div>
 
 								<div class="col-xs-12">
-									<form:password path="password" cssClass="form-control" placeholder="Password" required="" />
+									<form:password path="password" cssClass="form-control" placeholder="Password" required="true" />
 								</div>
 								
 								<div class="col-xs-12">
