@@ -20,13 +20,12 @@
 
 	<div class="container" style="margin-top: 7em;">
 		<div class="row">
-			<div class="col-lg-12">
-				<div class="col-lg-6">
-					<c:import url="includes/listSharingForm.jsp"></c:import>
-				</div>
-				<div class="col-lg-6">
-					<c:import url="includes/addItemForm.jsp"></c:import>
-				</div>
+			<div class="col-lg-6 col-xs-12">
+				<c:import url="includes/listSharingForm.jsp"></c:import>
+			</div>
+			
+			<div class="col-lg-6 col-xs-12">
+				<c:import url="includes/addItemForm.jsp"></c:import>
 			</div>
 		</div>
 
