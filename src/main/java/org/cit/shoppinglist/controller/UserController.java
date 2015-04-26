@@ -112,6 +112,8 @@ public class UserController {
 		if (session.getAttribute("loggedInUser") == null) {
 			String username = principal.getName();
 			user = userService.getUserByUsername(username);
+			
+			session.setAttribute("loggedInUser", user);
 		} else {
 			user = (User) session.getAttribute("loggedInUser");
 		}

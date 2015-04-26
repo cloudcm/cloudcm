@@ -16,7 +16,7 @@
 </script>
 </head>
 <body>
-	<c:import url="includes/navigationbar.jsp"></c:import>
+	<c:import url="includes/header.jsp"></c:import>
 
 	<div class="container" style="margin-top: 7em;">
 		<div class="row">
@@ -29,54 +29,48 @@
 				</div>
 			</div>
 		</div>
-	</div>
 
-	<input id="markUserListItemUrl" type="hidden"
-		value="${pageContext.request.contextPath}/user/markUserListItem" />
+		<input id="markUserListItemUrl" type="hidden" value="${pageContext.request.contextPath}/user/markUserListItem" />
 
-	<div class="row">
-		<div class="col-lg-12">
-			<div class="panel panel-default">
-				<div class="panel-heading">Your Shopping List</div>
-				<!-- /.panel-heading -->
-				<div class="panel-body">
-					<div class="table-responsive">
-						<table class="table table-striped table-bordered table-hover"
-							id="dataTables-example">
-							<thead>
-								<tr>
-									<th>No</th>
-									<th>Purchased</th>
-									<th>Item</th>
-									<th>Action</th>
-								</tr>
-							</thead>
-							<tbody>
-								<c:forEach var="userListItem" items="${userListItems}"
-									varStatus="status">
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="panel panel-default">
+					<div class="panel-heading">Your Shopping List</div>
+					<!-- /.panel-heading -->
+					<div class="panel-body">
+						<div class="table-responsive">
+							<table class="table table-striped table-bordered table-hover" id="dataTables-example">
+								<thead>
 									<tr>
-										<td>${status.index + 1}</td>
-										<td style="text-align: center;"><input type="checkbox"
-											${userListItem.purchased ? 'checked' : ''}
-											value="${userListItem.id}" onclick="markUnmarkItem(this)"></td>
-										<td>${userListItem.item}</td>
-										<td style="text-align: center;">
-											<!--  <a href="editProduct?id=${product.id}">Edit</a> &nbsp;&nbsp; -->
-											<a href="deleteUserListItem?id=${userListItem.id}">Delete</a>
-										</td>
-
+										<th>No</th>
+										<th>Purchased</th>
+										<th>Item</th>
+										<th>Action</th>
 									</tr>
-								</c:forEach>
-							</tbody>
-						</table>
+								</thead>
+								<tbody>
+									<c:forEach var="userListItem" items="${userListItems}" varStatus="status">
+										<tr>
+											<td>${status.index + 1}</td>
+											<td style="text-align: center;"><input type="checkbox" ${userListItem.purchased ? 'checked' : ''} value="${userListItem.id}"
+												onclick="markUnmarkItem(this)"></td>
+											<td>${userListItem.item}</td>
+											<td style="text-align: center;">
+												<!--  <a href="editProduct?id=${product.id}">Edit</a> &nbsp;&nbsp; --> <a href="deleteUserListItem?id=${userListItem.id}">Delete</a>
+											</td>
+
+										</tr>
+									</c:forEach>
+								</tbody>
+							</table>
+						</div>
 					</div>
+					<!-- /.panel-body -->
 				</div>
-				<!-- /.panel-body -->
+				<!-- /.panel -->
 			</div>
-			<!-- /.panel -->
+			<!-- /.col-lg-12 -->
 		</div>
-		<!-- /.col-lg-12 -->
-	</div>
 
 	</div>
 
