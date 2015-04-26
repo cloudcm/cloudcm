@@ -23,7 +23,7 @@
 			<div class="col-lg-6 col-xs-12">
 				<c:import url="includes/listSharingForm.jsp"></c:import>
 			</div>
-			
+
 			<div class="col-lg-6 col-xs-12">
 				<c:import url="includes/addItemForm.jsp"></c:import>
 			</div>
@@ -34,7 +34,10 @@
 		<div class="row">
 			<div class="col-xs-12">
 				<div class="panel panel-default">
-					<div class="panel-heading">Your Shopping List</div>
+					<div class="panel-heading">
+						<h3 class="panel-title text-bold">Your Shopping List</h3>
+					</div>
+					
 					<!-- /.panel-heading -->
 					<div class="panel-body">
 						<div class="table-responsive">
