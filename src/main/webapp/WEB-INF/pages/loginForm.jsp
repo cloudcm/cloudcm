@@ -19,7 +19,7 @@
 
 					<div class="login-panel panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Please Sign In</h3>
+							<h3 class="panel-title text-bold">Please Sign In</h3>
 						</div>
 
 						<div class="panel-body">

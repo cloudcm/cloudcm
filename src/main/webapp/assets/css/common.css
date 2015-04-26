@@ -16,8 +16,8 @@ body {
 	padding-left: 0em;
 }
 
-.text-align-right {
-	text-align: right;
+.text-bold {
+	font-weight: bold;
 }
 
 .table-responsive {

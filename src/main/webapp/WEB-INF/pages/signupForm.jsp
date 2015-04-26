@@ -19,7 +19,7 @@
 				<form:form action="signupUser" method="post" commandName="user" cssClass="form-signinUp">
 					<div class="login-panel panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Sign Up for your Shopping List</h3>
+							<h3 class="panel-title text-bold">Sign Up for your Shopping List</h3>
 						</div>
 
 						<div class="panel-body">
