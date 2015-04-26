@@ -81,7 +81,7 @@
 
 							<div class="row">
 								<div class="col-xs-12">
-									<button class="btn btn-lg btn-primary btn-block" type="submit" value="Sign Up">Sign Up</button>
+									<button class="btn btn-lg btn-success btn-block" type="submit" value="Sign Up">Sign Up</button>
 								</div>
 							</div>
 
