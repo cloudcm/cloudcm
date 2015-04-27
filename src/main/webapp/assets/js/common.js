@@ -20,9 +20,11 @@ function showDataTable() {
 		
 		"fnDrawCallback" : function(oSettings) {
 			//if row contains less than 11 items disable pagination bar
-			if ($('#dataTables-example tr').length < 11) {
+			if (oSettings.fnRecordsTotal() < 11) {
 				$('.dataTables_paginate').hide();
-			}
+			}else {
+		        $('.dataTables_paginate').show(); 
+		    }
 		}
 	});
 }
